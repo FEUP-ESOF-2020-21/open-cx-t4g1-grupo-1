@@ -85,7 +85,7 @@ High/Medium/Low
 #### **Story #2**
 *As an online conference attendee, I want to know as soon as possible if a talk has been postponed or if the room has changed so that I can better fit the conference activities into my work-from-home schedule.*
 #### MockUp
-> Imagem com notificação
+![place notification](https://i.imgur.com/ZEwQPfh.png)
 #### Acceptance Test
 ```gherkin
 Given I want to be notified for changes,
