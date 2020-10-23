@@ -70,7 +70,7 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 #### **Story #1**
 *As a conference attendee, I want to know when a talk is starting later so that I can enjoy a few more minutes of coffee break*
 #### MockUp
-![timetable interface](images/lock_screen.png)
+![schedule notification](https://i.imgur.com/Ky8q6lo.png)
 #### Acceptance Test
 ```gherkin
 Given I want to be notified for changes,
@@ -100,7 +100,7 @@ High/Medium/Low
 #### **Story #3**
 *As an app user i would like to see the updated conference timetable in a specific section of the app.*
 #### MockUp
-![timetable interface](images/Timetable.png)
+![timetable interface](https://i.imgur.com/2zuKXjX.png)
 #### Acceptance Test
 ```gherkin
 Given I want to know the updated schedule,
@@ -115,7 +115,7 @@ High/Medium/Low
 #### **Story #4**
 *As an app user i would like to have a preview of all of the conference information in a not so detailed manner.*
 #### MockUp
-![timetable interface](images/Timetable.png)
+![timetable interface](https://i.imgur.com/2zuKXjX.png)
 #### Acceptance Test
 ```gherkin
 Given I want to know the conference information,
