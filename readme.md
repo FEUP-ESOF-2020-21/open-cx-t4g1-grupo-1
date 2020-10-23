@@ -59,9 +59,28 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 * **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions. 
 
 ### User stories
+**List**:
+1. As a conference attendee, I want to know when a talk is starting later so that I can enjoy a few more minutes of coffee break.
+2. As an online conference attendee, I want to know as soon as possible if a talk has been postponed or if the room has changed so that I can better fit the conference activities into my work-from-home schedule.
+3. As an app user i would like to see the updated conference timetable in a specific section of the app.
+4. As an app user i would like to have a preview of all of the conference information in a not so detailed manner.
+5. As a conference host, I want to have the opportunity to reschedule a talk when a problem happens and still be able to inform the attendees about that change.
+6. As a conference host, I want to have the opportunity to change a talk’s room when I need to, and still notify the conference attendees about that change in time.
 
-*As a < user role >, I want < goal > so that < reason >.*
-
+#### Story #1
+*As a conference attendee, I want to know when a talk is starting later so that I can enjoy a few more minutes of coffee break*
+#### MockUp
+> Imagem com notificação
+#### Acceptance Test
+```gherkin
+Given I want to be notified for changes,
+When I unlock my phone,
+Then I can read the notification.
+```
+#### Value
+High/Medium/Low
+#### Effort
+> To Fill
 ### Domain model
 
 ---
@@ -93,7 +112,8 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 
 ## Project management
 
-  * [Github Projects](https://github.com/features/project-management/com)
+  * [Github Projects](https://github.com/FEUP-ESOF-2020-21/open-cx-t4g1-grupo-1/projects/2)
+  * [Github Issues](https://github.com/FEUP-ESOF-2020-21/open-cx-t4g1-grupo-1/issues)
 
 ---
 
