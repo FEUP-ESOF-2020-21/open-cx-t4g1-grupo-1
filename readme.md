@@ -31,7 +31,7 @@ Welcome to the documentation pages of the AdOv of **openCX**!
 
 ## Product Vision
 
-**A Simple and User Friendly App to provide the best possible hourly organization and adaptation to time table changes**
+**A Simple and User Friendly App to provide the best possible hourly organization and adaptation to timetable changes**
 
 ---
 ## Elevator Pitch
@@ -67,8 +67,23 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 5. As a conference host, I want to have the opportunity to reschedule a talk when a problem happens and still be able to inform the attendees about that change.
 6. As a conference host, I want to have the opportunity to change a talk’s room when I need to, and still notify the conference attendees about that change in time.
 
-#### Story #1
+#### **Story #1**
 *As a conference attendee, I want to know when a talk is starting later so that I can enjoy a few more minutes of coffee break*
+#### MockUp
+![timetable interface](images/lock_screen.png)
+#### Acceptance Test
+```gherkin
+Given I want to be notified for changes,
+When I unlock my phone,
+Then I can read the notification.
+```
+#### Value
+High/Medium/Low
+#### Effort
+> To Fill
+
+#### **Story #2**
+*As an online conference attendee, I want to know as soon as possible if a talk has been postponed or if the room has changed so that I can better fit the conference activities into my work-from-home schedule.*
 #### MockUp
 > Imagem com notificação
 #### Acceptance Test
@@ -81,6 +96,68 @@ Then I can read the notification.
 High/Medium/Low
 #### Effort
 > To Fill
+
+#### **Story #3**
+*As an app user i would like to see the updated conference timetable in a specific section of the app.*
+#### MockUp
+![timetable interface](images/Timetable.png)
+#### Acceptance Test
+```gherkin
+Given I want to know the updated schedule,
+When enter the timetable section of the app,
+Then I can see the see the updated schedule.
+```
+#### Value
+High/Medium/Low
+#### Effort
+> To Fill
+
+#### **Story #4**
+*As an app user i would like to have a preview of all of the conference information in a not so detailed manner.*
+#### MockUp
+![timetable interface](images/Timetable.png)
+#### Acceptance Test
+```gherkin
+Given I want to know the conference information,
+When enter the timetable section of the app,
+Then I can see the see the conference information.
+```
+#### Value
+High/Medium/Low
+#### Effort
+> To Fill
+
+#### **Story #5**
+*As a conference host, I want to have the opportunity to reschedule a talk when a problem happens and still be able to inform the attendees about that change.*
+#### MockUp
+> Menu de mudar talk informations
+#### Acceptance Test
+```gherkin
+Given I want to reschedule a talk,
+When enter the app as a host,
+Then I can change the talk information.
+```
+#### Value
+High/Medium/Low
+#### Effort
+> To Fill
+
+#### **Story #6**
+*As a conference host, I want to have the opportunity to change a talk’s room when I need to, and still notify the conference attendees about that change in time.*
+#### MockUp
+> Menu de mudar talk informations
+#### Acceptance Test
+```gherkin
+Given I want to change the talk's room,
+When enter the app as a host,
+Then I can change the talk information.
+```
+#### Value
+High/Medium/Low
+#### Effort
+> To Fill
+
+
 ### Domain model
 
 ---
