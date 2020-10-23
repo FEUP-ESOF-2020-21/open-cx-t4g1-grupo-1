@@ -342,3 +342,5 @@ Thumbs.db
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/dart,flutter,intellij,androidstudio,vscode,java
+
+.idea/
