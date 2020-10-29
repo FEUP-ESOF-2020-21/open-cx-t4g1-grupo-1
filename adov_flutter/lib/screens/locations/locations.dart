@@ -24,6 +24,7 @@ class Locations extends StatelessWidget {
 
   Widget _itemBuilder(BuildContext context, Location location) {
     return GestureDetector(
+      key: Key('location_list_item_${location.id}'),
       onTap: () => _onLocationTap(context, location.id),
       child: Container(
         height: 245.0,
