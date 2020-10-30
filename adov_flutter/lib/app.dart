@@ -1,7 +1,7 @@
 // app.dart
 
+import 'package:adov_flutter/screens/talk_detail/talk_detail.dart';
 import 'package:flutter/material.dart';
-import 'screens/location_detail/location_detail.dart';
 import 'screens/locations/locations.dart';
 import 'style.dart';
 
@@ -28,7 +28,7 @@ RouteFactory _routes() {
         screen = Locations();
         break;
       case LocationDetailRoute:
-        screen = LocationDetail(arguments['id']);
+        screen = TalkDetail(arguments['id']);
         break;
       default:
         return null;
