@@ -55,7 +55,7 @@ When enter the timetable section of the app,
 Then I can see the see the updated schedule.
 ```
 #### Value
-High/Medium/Low
+High
 #### Effort
 > To Fill
 
@@ -70,7 +70,7 @@ When enter the timetable section of the app,
 Then I can see the see the conference information.
 ```
 #### Value
-High/Medium/Low
+Low
 #### Effort
 > To Fill
 
@@ -85,7 +85,7 @@ When enter the app as a host,
 Then I can change the talk information.
 ```
 #### Value
-High/Medium/Low
+High
 #### Effort
 > To Fill
 
@@ -100,7 +100,7 @@ When enter the app as a host,
 Then I can change the talk information.
 ```
 #### Value
-High/Medium/Low
+High
 #### Effort
 > To Fill
 
@@ -115,7 +115,7 @@ When enter any talk details section of the app,
 Then I can see the details about a specific talk.
 ```
 #### Value
-High/Medium/Low
+Medium
 #### Effort
 > To Fill
 
@@ -130,12 +130,12 @@ When I make changes to a talk location,
 Then I can have everyone notified.
 ```
 #### Value
-High/Medium/Low
+Medium
 #### Effort
 > To Fill
 
 ## **Story #9**
-*As a conference host, I want to to be able to send a notification when my talk needs to be postponed.*
+*As a conference host, I want to be able to send a notification when my talk needs to be postponed.*
 #### MockUp
 > Criar alteração que origina a notificação.
 #### Acceptance Test
@@ -145,7 +145,7 @@ When I make changes to a talk schedule,
 Then I can have everyone notified.
 ```
 #### Value
-High/Medium/Low
+Medium
 #### Effort
 > To Fill
 
@@ -160,7 +160,7 @@ When I enter the app,
 Then I can see informations about the conference.
 ```
 #### Value
-High/Medium/Low
+High
 #### Effort
 > To Fill
 
@@ -175,7 +175,7 @@ When I enter the app,
 Then I can change informations about the conference.
 ```
 #### Value
-High/Medium/Low
+High
 #### Effort
 > To Fill
 
@@ -190,7 +190,7 @@ When I enter the home page,
 Then I can know more about what i am going to attend.
 ```
 #### Value
-High/Medium/Low
+Medium
 #### Effort
 > To Fill
 
@@ -205,6 +205,6 @@ When I enter the home page,
 Then I can easily know what is the next event.
 ```
 #### Value
-High/Medium/Low
+Medium
 #### Effort
 > To Fill
