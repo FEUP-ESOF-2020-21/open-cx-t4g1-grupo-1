@@ -58,104 +58,35 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 
 * **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions. 
 
-### User stories
+### [User stories](userstories.md)
 **List**:
-1. As a conference attendee, I want to know when a talk is starting later so that I can enjoy a few more minutes of coffee break.
-2. As an online conference attendee, I want to know as soon as possible if a talk has been postponed or if the room has changed so that I can better fit the conference activities into my work-from-home schedule.
-3. As an app user i would like to see the updated conference timetable in a specific section of the app.
-4. As an app user i would like to have a preview of all of the conference information in a not so detailed manner.
-5. As a conference host, I want to have the opportunity to reschedule a talk when a problem happens and still be able to inform the attendees about that change.
-6. As a conference host, I want to have the opportunity to change a talk’s room when I need to, and still notify the conference attendees about that change in time.
 
-#### **Story #1**
-*As a conference attendee, I want to know when a talk is starting later so that I can enjoy a few more minutes of coffee break*
-#### MockUp
-![schedule notification](https://i.imgur.com/Ky8q6lo.png)
-#### Acceptance Test
-```gherkin
-Given I want to be notified for changes,
-When I unlock my phone,
-Then I can read the notification.
-```
-#### Value
-High/Medium/Low
-#### Effort
-> To Fill
+1. Conference
+    * [Show conference preview](userstories.md#Story-4).
 
-#### **Story #2**
-*As an online conference attendee, I want to know as soon as possible if a talk has been postponed or if the room has changed so that I can better fit the conference activities into my work-from-home schedule.*
-#### MockUp
-> Imagem com notificação
-#### Acceptance Test
-```gherkin
-Given I want to be notified for changes,
-When I unlock my phone,
-Then I can read the notification.
-```
-#### Value
-High/Medium/Low
-#### Effort
-> To Fill
+2. Timetable
+    * [See updated timetable](userstories.md#Story-3).
 
-#### **Story #3**
-*As an app user i would like to see the updated conference timetable in a specific section of the app.*
-#### MockUp
-![timetable interface](https://i.imgur.com/2zuKXjX.png)
-#### Acceptance Test
-```gherkin
-Given I want to know the updated schedule,
-When enter the timetable section of the app,
-Then I can see the see the updated schedule.
-```
-#### Value
-High/Medium/Low
-#### Effort
-> To Fill
+2. Talk
+    * [Show talk details](userstories.md#Story-7).
+    * [Update talk room](userstories.md#Story-6).
+    * [Reschedule talk](userstories.md#Story-5).
 
-#### **Story #4**
-*As an app user i would like to have a preview of all of the conference information in a not so detailed manner.*
-#### MockUp
-![timetable interface](https://i.imgur.com/2zuKXjX.png)
-#### Acceptance Test
-```gherkin
-Given I want to know the conference information,
-When enter the timetable section of the app,
-Then I can see the see the conference information.
-```
-#### Value
-High/Medium/Low
-#### Effort
-> To Fill
+4. Receive notifications
+    * [When room changes](userstories.md#Story-2).
+    * [When talk is postponed](userstories.md#Story-1).
 
-#### **Story #5**
-*As a conference host, I want to have the opportunity to reschedule a talk when a problem happens and still be able to inform the attendees about that change.*
-#### MockUp
-> Menu de mudar talk informations
-#### Acceptance Test
-```gherkin
-Given I want to reschedule a talk,
-When enter the app as a host,
-Then I can change the talk information.
-```
-#### Value
-High/Medium/Low
-#### Effort
-> To Fill
+5. Send notifications
+    * [When room changes](userstories.md#Story-8).
+    * [When timetable changes](userstories.md#Story-9).
 
-#### **Story #6**
-*As a conference host, I want to have the opportunity to change a talk’s room when I need to, and still notify the conference attendees about that change in time.*
-#### MockUp
-> Menu de mudar talk informations
-#### Acceptance Test
-```gherkin
-Given I want to change the talk's room,
-When enter the app as a host,
-Then I can change the talk information.
-```
-#### Value
-High/Medium/Low
-#### Effort
-> To Fill
+6. Sign in
+    * [Sign in as guest](userstories.md#Story-10).
+    * [Sign in as staff](userstories.md#Story-11).
+
+8. Home page
+    * [Conference information](userstories.md#Story-11).
+    * [Next Event](userstories.md#Story-12).
 
 
 ### Domain model
