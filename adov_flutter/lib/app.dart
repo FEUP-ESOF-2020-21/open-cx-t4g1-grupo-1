@@ -1,12 +1,12 @@
 // app.dart
 
+import 'file:///C:/Users/skidr/OneDrive/Desktop/open-cx-t4g1-grupo-1/adov_flutter/lib/screens/talks_schedule/talks_schedule.dart';
 import 'package:adov_flutter/screens/talk_detail/talk_detail.dart';
 import 'package:flutter/material.dart';
-import 'screens/locations/locations.dart';
 import 'style.dart';
 
-const LocationsRoute = '/';
-const LocationDetailRoute = '/location_detail';
+const TalksScheduleRoute = '/';
+const TalkDetailRoute = '/talk_detail';
 
 class App extends StatelessWidget {
   @override
@@ -24,10 +24,10 @@ RouteFactory _routes() {
     Widget screen;
 
     switch (settings.name) {
-      case LocationsRoute:
-        screen = Locations();
+      case TalksScheduleRoute:
+        screen = TalksSchedule();
         break;
-      case LocationDetailRoute:
+      case TalkDetailRoute:
         screen = TalkDetail(arguments['id']);
         break;
       default:
