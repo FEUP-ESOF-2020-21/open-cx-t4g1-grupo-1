@@ -8,11 +8,11 @@ import '../style.dart';
 
 const LocationTileHeight = 100.0;
 
-class TalkTile extends StatelessWidget {
+class TalkContainer extends StatelessWidget {
   final Talk talk;
   final bool darkTheme;
 
-  TalkTile({this.talk, this.darkTheme = false});
+  TalkContainer({this.talk, this.darkTheme = false});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class TalkTile extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: DefaultPaddingHorizontal),
-      height: 100,
+      height: 70,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
