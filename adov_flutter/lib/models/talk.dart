@@ -28,14 +28,14 @@ class Talk {
       Talk(9, "Talk 9", "B209", TimeOfDay(hour: 12, minute: 15), Day(4, DateTime(2020, 12, 18, 10, 20)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
       Talk(10, "Talk 10", "B209", TimeOfDay(hour: 12, minute: 15), Day(4, DateTime(2020, 12, 18, 10, 20)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
       Talk(11, "Talk 11", "B209", TimeOfDay(hour: 15, minute: 15), Day(4, DateTime(2020, 12, 18, 10, 20)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
-      Talk(12, "Talk 12", "B209", TimeOfDay(hour: 13, minute: 15), Day(5, DateTime(2020, 12, 18, 10, 22)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
-      Talk(13, "Talk 13", "B209", TimeOfDay(hour: 12, minute: 15), Day(5, DateTime(2020, 12, 18, 10, 22)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
-      Talk(14, "Talk 14", "B209", TimeOfDay(hour: 17, minute: 15), Day(5, DateTime(2020, 12, 18, 10, 22)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
-      Talk(15, "Talk 15", "B209", TimeOfDay(hour: 18, minute: 30), Day(5, DateTime(2020, 12, 18, 10, 22)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
-      Talk(16, "Talk 16", "B209", TimeOfDay(hour: 9, minute: 15), Day(6, DateTime(2020, 12, 18, 10, 23)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
-      Talk(17, "Talk 17", "B209", TimeOfDay(hour: 17, minute: 15), Day(6, DateTime(2020, 12, 18, 10, 23)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
-      Talk(18, "Talk 18", "B209", TimeOfDay(hour: 13, minute: 15), Day(6, DateTime(2020, 12, 18, 10, 23)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
-      Talk(19, "Talk 19", "B209", TimeOfDay(hour: 18, minute: 15), Day(6, DateTime(2020, 12, 18, 10, 23)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk(12, "Talk 12", "B209", TimeOfDay(hour: 13, minute: 15), Day(5, DateTime(2020, 12, 19, 10, 22)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk(13, "Talk 13", "B209", TimeOfDay(hour: 12, minute: 15), Day(5, DateTime(2020, 12, 19, 10, 22)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk(14, "Talk 14", "B209", TimeOfDay(hour: 17, minute: 15), Day(5, DateTime(2020, 12, 19, 10, 22)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk(15, "Talk 15", "B209", TimeOfDay(hour: 18, minute: 30), Day(5, DateTime(2020, 12, 19, 10, 22)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk(16, "Talk 16", "B209", TimeOfDay(hour: 9, minute: 15), Day(6, DateTime(2020, 12, 20, 10, 23)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk(17, "Talk 17", "B209", TimeOfDay(hour: 17, minute: 15), Day(6, DateTime(2020, 12, 20, 10, 23)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk(18, "Talk 18", "B209", TimeOfDay(hour: 13, minute: 15), Day(6, DateTime(2020, 12, 20, 10, 23)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk(19, "Talk 19", "B209", TimeOfDay(hour: 18, minute: 15), Day(6, DateTime(2020, 12, 20, 10, 23)), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
     ];
   }
 
@@ -46,6 +46,16 @@ class Talk {
         return list[i];
     }
     return null;
+  }
+
+  static List<Talk> fetchByDay(int day) {
+    List<Talk> list = [];
+    fetchAll().forEach((element) {
+      if (element.day.day == day) {
+        list.add(element);
+      }
+    });
+    return list;
   }
 
   static Set<int> fetchDays() {
