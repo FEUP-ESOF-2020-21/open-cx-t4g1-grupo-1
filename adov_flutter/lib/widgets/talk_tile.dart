@@ -30,7 +30,7 @@ class TalkTile extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle,
             ),
             Text(
-              DateFormat('dd/MM/yyyy ').format(talk.day.date) + talk.time.format(context),
+              DateFormat('dd/MM/yyyy ').format(talk.day) + talk.time.format(context),
               style: Theme.of(context)
                   .textTheme
                   .caption

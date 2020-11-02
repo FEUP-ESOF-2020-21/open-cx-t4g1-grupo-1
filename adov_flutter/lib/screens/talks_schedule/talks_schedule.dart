@@ -14,6 +14,7 @@ class TalksSchedule extends StatelessWidget {
   Widget build(BuildContext context) {
     ScrollController _controller = new ScrollController();
 
+    int day = 1;
     return Scaffold(
         appBar: AppBar(
           title: Text('Schedule'),
@@ -24,7 +25,7 @@ class TalksSchedule extends StatelessWidget {
           shrinkWrap: true,
           padding: EdgeInsets.symmetric(vertical: 20.0),
           children: <Widget>[
-            for ( var i in days ) _dayWidget(context, Talk.fetchByDay(i)),
+            for ( var i in days ) _dayWidget(context, day++, Talk.fetchByDay(i)),
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -60,7 +61,7 @@ class TalksSchedule extends StatelessWidget {
     );
   }
 
-  Widget _dayWidget(BuildContext context, List<Talk> talks) {
+  Widget _dayWidget(BuildContext context, int day, List<Talk> talks) {
     return
       Row(
         mainAxisSize: MainAxisSize.min,
@@ -68,7 +69,7 @@ class TalksSchedule extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topCenter,
-            child: TalkDay(talks[0], false),
+            child: TalkDay(talks[0], day, false),
           ),
           Expanded(
             child: ListView.builder(
