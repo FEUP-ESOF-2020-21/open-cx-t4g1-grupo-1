@@ -58,6 +58,7 @@ class Talk {
 
   static Set<DateTime> fetchDays() {
     List<Talk> list = fetchAll();
+    list.sort((a, b) => a.day.compareTo(b.day));
     Set<DateTime> days = new Set();
     for (var i = 0; i < list.length; ++i) {
       days.add(list[i].day);
