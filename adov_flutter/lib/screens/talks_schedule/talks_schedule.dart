@@ -4,6 +4,7 @@ import 'package:adov_flutter/widgets/talk_container.dart';
 import 'package:adov_flutter/widgets/talk_day.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 
 
 class TalksSchedule extends StatelessWidget {
@@ -25,7 +26,15 @@ class TalksSchedule extends StatelessWidget {
           children: <Widget>[
             for ( var i in days ) _dayWidget(context, Talk.fetchByDay(i)),
           ],
-        ));
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Toast.show("Not implemented yet", context);
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Colors.red,
+        ),
+    );
   }
 
   Widget _itemBuilder(BuildContext context, Talk talk) {
