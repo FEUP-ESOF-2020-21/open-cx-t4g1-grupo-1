@@ -1,12 +1,14 @@
 // app.dart
 
 import 'file:///C:/Users/skidr/OneDrive/Desktop/open-cx-t4g1-grupo-1/adov_flutter/lib/screens/talks_schedule/talks_schedule.dart';
+import 'package:adov_flutter/screens/add_talk/add_talk.dart';
 import 'package:adov_flutter/screens/talk_detail/talk_detail.dart';
 import 'package:flutter/material.dart';
 import 'style.dart';
 
 const TalksScheduleRoute = '/';
 const TalkDetailRoute = '/talk_detail';
+const AddTalkRoute = '/add_talk';
 
 class App extends StatelessWidget {
   @override
@@ -29,6 +31,9 @@ RouteFactory _routes() {
         break;
       case TalkDetailRoute:
         screen = TalkDetail(arguments['id']);
+        break;
+      case AddTalkRoute:
+        screen = AddTalk();
         break;
       default:
         return null;
