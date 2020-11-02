@@ -1,6 +1,6 @@
 // app.dart
 
-import 'file:///C:/Users/skidr/OneDrive/Desktop/open-cx-t4g1-grupo-1/adov_flutter/lib/screens/talks_schedule/talks_schedule.dart';
+import 'package:adov_flutter/screens/talks_schedule/talks_schedule.dart';
 import 'package:adov_flutter/screens/add_talk/add_talk.dart';
 import 'package:adov_flutter/screens/talk_detail/talk_detail.dart';
 import 'package:flutter/material.dart';

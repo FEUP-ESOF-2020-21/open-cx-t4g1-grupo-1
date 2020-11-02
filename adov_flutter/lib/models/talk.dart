@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class Talk {
   final int id;
-  final String name;
+  final String title;
   final String room;
   final TimeOfDay time;
   final DateTime day;
   final String details;
   final String imagePath;
 
-  Talk(this.id, this.name, this.room, this.time, this.day, this.details, this.imagePath);
+  Talk(this.id, this.title, this.room, this.time, this.day, this.details, this.imagePath);
 
   static List<Talk> fetchAll() {
     return [

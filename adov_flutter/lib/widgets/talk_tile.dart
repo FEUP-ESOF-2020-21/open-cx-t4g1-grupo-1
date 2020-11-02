@@ -37,7 +37,7 @@ class TalkTile extends StatelessWidget {
                   .copyWith(color: textColor),
             ),
             Text(
-              talk.name.toUpperCase(),
+              talk.title.toUpperCase(),
               key: Key('talk_tile_name_${talk.id}'),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
