@@ -30,14 +30,14 @@ class TalkTile extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle,
             ),
             Text(
-              DateFormat('dd/MM/yyyy hh:mm').format(talk.time).toUpperCase(),
+              DateFormat('dd/MM/yyyy ').format(talk.day) + talk.time.format(context),
               style: Theme.of(context)
                   .textTheme
                   .caption
                   .copyWith(color: textColor),
             ),
             Text(
-              talk.name.toUpperCase(),
+              talk.title.toUpperCase(),
               key: Key('talk_tile_name_${talk.id}'),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,

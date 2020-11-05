@@ -16,7 +16,7 @@ class TalkDetail extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(talk.name),
+        title: Text(talk.title),
       ),
       body: SingleChildScrollView(
         child: Column(
