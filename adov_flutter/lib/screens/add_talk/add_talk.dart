@@ -1,3 +1,4 @@
+import 'package:adov_flutter/input_decorators/form_input_decorator.dart';
 import 'package:adov_flutter/models/talk.dart';
 import 'package:adov_flutter/widgets/date_time_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -54,7 +55,7 @@ class AddTalkFormState extends State<AddTalk> {
                       hintText: "Title",
                     ),
                     validator: (value) {
-                      return (value.isEmpty) ? 'Please enter a title' : null;
+                      return (value.isEmpty) ? '' : null;
                     },
                   ),
                 ),
@@ -78,32 +79,7 @@ class AddTalkFormState extends State<AddTalk> {
                             Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: InputDecoration(
-                                  labelText: "Talk Date",
-                                  fillColor: Colors.white,
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.blue,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.grey,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.red,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  errorStyle: TextStyle(height: 0),
-                                ),
+                                decoration: CustomInputDecorator.decorator(),
                                 format: DateFormat("dd/MM/yyyy"),
                                 validator: (date) {
                                   return (date == null) ? "" : null;
@@ -131,30 +107,7 @@ class AddTalkFormState extends State<AddTalk> {
                                 padding: EdgeInsets.symmetric(horizontal: 20)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: InputDecoration(
-                                  labelText: "Talk Time",
-                                  fillColor: Colors.white,
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: BorderSide(
-                                        color: Colors.blue, width: 1.5),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.grey,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: BorderSide(
-                                      color: Colors.red,
-                                      width: 1.5,
-                                    ),
-                                  ),
-                                  errorStyle: TextStyle(height: 0),
-                                ),
+                                decoration: CustomInputDecorator.decorator(),
                                 format: DateFormat("HH:mm"),
                                 validator: (time) {
                                   return (time == null) ? "" : null;
@@ -185,30 +138,9 @@ class AddTalkFormState extends State<AddTalk> {
                     style: TextStyle(
                       fontSize: 18.0,
                     ),
-                    decoration: InputDecoration(
-                      labelText: "Room",
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(color: Colors.blue, width: 1.5),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(
-                          color: Colors.grey,
-                          width: 1.5,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                          width: 1.5,
-                        ),
-                      ),
-                    ),
+                    decoration: CustomInputDecorator.decorator(),
                     validator: (value) {
-                      return (value.isEmpty) ? 'Please enter a room' : null;
+                      return (value.isEmpty) ? '' : null;
                     },
                   ),
                 ),
@@ -223,30 +155,9 @@ class AddTalkFormState extends State<AddTalk> {
                     style: TextStyle(
                       fontSize: 18.0,
                     ),
-                    decoration: InputDecoration(
-                      labelText: "Description",
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(color: Colors.blue, width: 1.5),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(
-                          color: Colors.grey,
-                          width: 1.5,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                          width: 1.5,
-                        ),
-                      ),
-                    ),
+                    decoration: CustomInputDecorator.decorator(),
                     validator: (value) {
-                      return (value.isEmpty) ? 'Please enter a description' : null;
+                      return (value.isEmpty) ? '' : null;
                     },
                   ),
                 )
