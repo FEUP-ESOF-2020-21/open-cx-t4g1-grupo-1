@@ -37,7 +37,7 @@ class NextTalk extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 child: Text(
                   "Next Talk",
                   style: CardsTitleStyle.copyWith(
