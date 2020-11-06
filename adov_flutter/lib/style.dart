@@ -13,6 +13,20 @@ const Color TextColorFaint = Color.fromRGBO(125, 125, 125, 1.0);
 
 const DefaultPaddingHorizontal = 12.0;
 
+const CardsTitleStyle = TextStyle(
+  fontFamily: FontNameDefault,
+  fontWeight: FontWeight.w500,
+  fontSize: LargeTextSize,
+  color: Colors.white,
+);
+
+const ListItemDrawerStyle = TextStyle(
+  fontFamily: FontNameDefault,
+  fontWeight: FontWeight.w300,
+  fontSize: MediumTextSize,
+  color: Colors.black,
+);
+
 const AppBarTextStyle = TextStyle(
   fontFamily: FontNameDefault,
   fontWeight: FontWeight.w300,

@@ -53,12 +53,19 @@ class Talk {
         list.add(element);
       }
     });
+    list.sort((a, b) {
+      return DateTime(a.day.year, a.day.month, a.day.day, a.time.hour, a.time.minute)
+          .compareTo(DateTime(b.day.year, b.day.month, b.day.day, b.time.hour, b.time.minute));
+    });
     return list;
   }
 
   static Set<DateTime> fetchDays() {
     List<Talk> list = fetchAll();
-    list.sort((a, b) => a.day.compareTo(b.day));
+    list.sort((a, b) {
+      return DateTime(a.day.year, a.day.month, a.day.day, a.time.hour, a.time.minute)
+          .compareTo(DateTime(b.day.year, b.day.month, b.day.day, b.time.hour, b.time.minute));
+    });
     Set<DateTime> days = new Set();
     for (var i = 0; i < list.length; ++i) {
       days.add(list[i].day);
