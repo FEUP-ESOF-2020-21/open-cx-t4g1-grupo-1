@@ -1,4 +1,5 @@
 import 'package:adov_flutter/app.dart';
+import 'package:adov_flutter/screens/home_screen/conference_sponsors.dart';
 import 'package:adov_flutter/screens/home_screen/conference_stats.dart';
 import 'package:adov_flutter/screens/home_screen/next_talk.dart';
 import '../../app.dart';
@@ -65,13 +66,16 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ConferenceDetails(
-              padding: EdgeInsets.symmetric(vertical: 40),
+              padding: EdgeInsets.symmetric(vertical: 20),
             ),
             NextTalk(
-              padding: EdgeInsets.only(bottom: 40),
+              padding: EdgeInsets.only(bottom: 20),
             ),
             ConferenceStats(
-              padding: EdgeInsets.only(bottom: 40),
+              padding: EdgeInsets.only(bottom: 20),
+            ),
+            ConferenceSponsors(
+              padding: EdgeInsets.only(bottom: 20),
             ),
           ],
         ),

@@ -1,11 +1,15 @@
+import 'package:adov_flutter/models/Conference.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../style.dart';
 
 class ConferenceDetails extends StatelessWidget {
   final bool darkTheme;
   final EdgeInsets padding;
+
+  final Conference conference = Conference.fetch();
 
   ConferenceDetails({
     this.darkTheme = false,
@@ -31,18 +35,23 @@ class ConferenceDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Conference Alpha",
-                style: Theme.of(context).textTheme.title.copyWith(color: textColor),
+                conference.name,
+                style: Theme.of(context).textTheme.title.copyWith(
+                  color: textColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: VeryLargeTextSize
+                ),
               ),
               Text(
-                '10/10/2020 to 16/10/2020',
+                DateFormat('dd/MM/yyyy ').format(conference.start) + "to " + DateFormat('dd/MM/yyyy').format(conference.end),
                 style: Theme.of(context).textTheme.subtitle,
               ),
+              Padding(padding: EdgeInsets.only(bottom: 10.0)),
               Text(
-                "Best conference around Mars, brought to you by Eleon Muskee",
+                conference.description,
                 style: Theme.of(context)
                     .textTheme
-                    .caption
+                    .bodyText2
                     .copyWith(color: textColor),
               ),
             ]),
