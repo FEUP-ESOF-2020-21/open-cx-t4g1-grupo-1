@@ -71,6 +71,8 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
     * [Show talk details](userstories.md#Story-7).
     * [Update talk room](userstories.md#Story-6).
     * [Reschedule talk](userstories.md#Story-5).
+    * [Add Talk](userstories.md#story-14)
+    * [Delete Talk](userstories.md#Story-15)
 
 4. Receive notifications
     * [When room changes](userstories.md#Story-2).
@@ -85,7 +87,7 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
     * [Sign in as staff](userstories.md#Story-11).
 
 8. Home page
-    * [Conference information](userstories.md#Story-11).
+    * [Conference information](userstories.md#Story-13).
     * [Next Event](userstories.md#Story-12).
 
 
