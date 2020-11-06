@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "355579108308",
+    "firebase_url": "https://adov-b0f96.firebaseio.com",
+    "project_id": "adov-b0f96",
+    "storage_bucket": "adov-b0f96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355579108308:android:2c209a5e668bb9fbf91441",
+        "android_client_info": {
+          "package_name": "com.esof.adov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355579108308-g1alol9cvjf0qp1k0qt8nduv2sne703v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEu8Tx1Gj6ZE3k0EwQUV-KHj3Bo38T6oc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355579108308-g1alol9cvjf0qp1k0qt8nduv2sne703v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
