@@ -2,15 +2,10 @@ import 'package:adov_flutter/app.dart';
 import 'package:adov_flutter/screens/home_screen/next_talk.dart';
 import '../../app.dart';
 import '../../style.dart';
-import '../../style.dart';
-import '../../style.dart';
-import '../../style.dart';
-import '../../style.dart';
-import '../../style.dart';
-import '../../style.dart';
-import 'file:///C:/Users/skidr/OneDrive/Desktop/open-cx-t4g1-grupo-1/adov_flutter/lib/screens/home_screen/conference_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'conference_details.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

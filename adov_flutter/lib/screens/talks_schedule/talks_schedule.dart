@@ -50,24 +50,21 @@ class TalksSchedule extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             width: 300,
-            child: Stack(
-              children: [
-                // ImageBanner(assetPath: talk.imagePath, height: 245.0),
-                TalkContainer(talk: talk, darkTheme: true),
-              ],
-            ),
-          )),
+            child: TalkContainer(talk: talk, darkTheme: true),
+          )
+      ),
     );
   }
 
   Widget _dayWidget(BuildContext context, int day, List<Talk> talks) {
     return
       Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Align(
-            alignment: Alignment.topCenter,
+          Padding(
+            padding: EdgeInsets.only(left: 25),
             child: TalkDay(talks[0], day, false),
           ),
           Expanded(

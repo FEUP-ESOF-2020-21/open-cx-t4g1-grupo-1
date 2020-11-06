@@ -5,9 +5,6 @@ import 'package:intl/intl.dart';
 import '../../app.dart';
 import '../../models/talk.dart';
 import '../../style.dart';
-import '../../style.dart';
-import '../../style.dart';
-import '../../style.dart';
 
 class NextTalk extends StatelessWidget {
   final bool darkTheme;
