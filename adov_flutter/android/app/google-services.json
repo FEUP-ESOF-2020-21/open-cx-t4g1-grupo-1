@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "807735734182",
+    "firebase_url": "https://adov-5f4b8.firebaseio.com",
+    "project_id": "adov-5f4b8",
+    "storage_bucket": "adov-5f4b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807735734182:android:3b1e6a46fe1a6b1f84a967",
+        "android_client_info": {
+          "package_name": "com.group1.adov_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807735734182-d3c1b6thrvl21rr43v0bv0l6vqivksk9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOGpf0mLL4r7aeg0pe4vc8srdeHFvJrVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807735734182-d3c1b6thrvl21rr43v0bv0l6vqivksk9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
