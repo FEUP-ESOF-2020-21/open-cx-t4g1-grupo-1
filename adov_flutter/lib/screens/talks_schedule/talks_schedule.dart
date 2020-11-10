@@ -35,7 +35,7 @@ class TalksSchedule extends StatelessWidget {
             Navigator.pushNamed(context, AddTalkRoute);
           },
           child: Icon(Icons.add),
-          backgroundColor: Colors.red,
+          backgroundColor: AccentColor,
         ),
     );
   }
@@ -48,11 +48,8 @@ class TalksSchedule extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: Container(
             margin: const EdgeInsets.only(right: 20.0, bottom: 20.0),
-            decoration: BoxDecoration(
-              color: const Color(0xff474747),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            width: 300,
+            decoration: ComponentBoxStyle.create(radius: 8, color: ComponentColor),
+            width: 270,
             child: TalkContainer(talk: talk, darkTheme: true),
           )
       ),

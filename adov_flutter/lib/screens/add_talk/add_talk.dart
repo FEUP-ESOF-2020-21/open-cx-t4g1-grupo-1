@@ -1,4 +1,3 @@
-import 'package:adov_flutter/input_decorators/form_input_decorator.dart';
 import 'package:adov_flutter/models/talk.dart';
 import 'package:adov_flutter/style.dart';
 import 'package:adov_flutter/widgets/date_time_picker.dart';
@@ -55,6 +54,7 @@ class AddTalkFormState extends State<AddTalk> {
                     ),
                     decoration: InputDecoration(
                       hintText: "Title",
+                      focusColor: AccentColor,
                     ),
                     validator: (value) {
                       return (value.isEmpty) ? '' : null;
@@ -181,7 +181,7 @@ class AddTalkFormState extends State<AddTalk> {
           }
         },
         child: Icon(Icons.done),
-        backgroundColor: Colors.red,
+        backgroundColor: AccentColor,
       ),
     );
   }

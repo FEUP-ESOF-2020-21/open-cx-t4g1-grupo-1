@@ -26,10 +26,7 @@ class ConferenceDetails extends StatelessWidget {
         width: 400,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         margin: EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.circular(15),
-        ),
+        decoration: ComponentBoxStyle.create(radius: 15),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,

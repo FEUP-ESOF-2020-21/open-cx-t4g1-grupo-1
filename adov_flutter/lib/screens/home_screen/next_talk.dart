@@ -25,10 +25,7 @@ class NextTalk extends StatelessWidget {
       child: Container(
         width: 400,
         margin: EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.circular(15),
-        ),
+        decoration: ComponentBoxStyle.create(radius: 15),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,10 +42,7 @@ class NextTalk extends StatelessWidget {
               GestureDetector(
                 onTap: () => _onTalkTap(context, talk.id),
                 child: Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(128, 128, 128, 1),
-                    borderRadius: BorderRadius.circular(7.5),
-                  ),
+                  decoration: ComponentBoxStyle.create(radius: 7.5, color: InnerComponentColor),
                   width: 400,
                   margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),

@@ -20,10 +20,7 @@ class ConferenceSponsors extends StatelessWidget {
       child: Container(
         width: 400,
         margin: EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.circular(15),
-        ),
+        decoration: ComponentBoxStyle.create(radius: 15),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,10 +37,7 @@ class ConferenceSponsors extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(128, 128, 128, 1),
-                  borderRadius: BorderRadius.circular(7.5),
-                ),
+                decoration: ComponentBoxStyle.create(radius: 7.5, color: InnerComponentColor),
                 child: Text(
                   _getSponsors(),
                   style: Body1TextStyle,
