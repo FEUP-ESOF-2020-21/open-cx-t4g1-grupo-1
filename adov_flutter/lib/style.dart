@@ -11,20 +11,29 @@ const String FontNameDefault = 'Montserrat';
 
 const Color TextColorDark = Colors.black;
 const Color TextColorLight = Colors.white;
-const Color TextColorAccent = AccentColor;
+const Color TextColorAccent = Colors.red;
 const Color TextColorFaint = Color.fromRGBO(125, 125, 125, 1.0);
 
-const Color AccentColor = Color(0xFF29335C);
-const Color ComponentColor = Color(0xFFB9BFDF);
-const Color InnerComponentColor = Color(0xFF818BC5);
+const Color MainColor = Color(0xFF29335C);
+const Color AccentColor = TextColorAccent;
+const Color ComponentColor = Color(0xFF29335C);
+const Color InnerComponentColor = Color(0xFF191F38);
 
 const DefaultPaddingHorizontal = 12.0;
 
 class ComponentBoxStyle {
-  static create({double radius: 0, Color color: ComponentColor}) {
+  static create({double radius: 0, Color color: ComponentColor, bool shadow: false}) {
     return BoxDecoration(
       color: color,
       borderRadius: BorderRadius.circular(radius),
+      boxShadow: [
+        if (shadow)
+          BoxShadow(
+            color: MainColor.withOpacity(0.5),
+            blurRadius: 2,
+            offset: Offset(0, 5), // changes position of shadow
+          ),
+      ],
     );
   }
 }
@@ -44,7 +53,7 @@ class CustomInputDecorator extends InputDecoration {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5.0),
         borderSide: BorderSide(
-          color: AccentColor,
+          color: MainColor,
           width: 1.5,
         ),
       ),

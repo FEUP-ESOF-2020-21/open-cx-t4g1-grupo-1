@@ -10,6 +10,8 @@ import '../../style.dart';
 
 class TalksSchedule extends StatelessWidget {
   final days = Talk.fetchDays();
+  final nextTalk = Talk.getNextTalk();
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class TalksSchedule extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Schedule'),
-          backgroundColor: AccentColor,
+          backgroundColor: MainColor,
         ),
         body: ListView(
           physics: const AlwaysScrollableScrollPhysics(), // new
@@ -48,9 +50,12 @@ class TalksSchedule extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: Container(
             margin: const EdgeInsets.only(right: 20.0, bottom: 20.0),
-            decoration: ComponentBoxStyle.create(radius: 8, color: ComponentColor),
+            decoration: ComponentBoxStyle.create(
+              radius: 8,
+              color: (talk == nextTalk) ? Colors.red : MainColor
+            ),
             width: 270,
-            child: TalkContainer(talk: talk, darkTheme: true),
+            child: TalkContainer(talk: talk, darkTheme: true, nextTalk: (talk == nextTalk),),
           )
       ),
     );

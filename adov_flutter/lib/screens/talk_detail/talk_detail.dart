@@ -19,7 +19,7 @@ class TalkDetail extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(talk.title),
-        backgroundColor: AccentColor,
+        backgroundColor: MainColor,
       ),
       body: SingleChildScrollView(
         child: Column(

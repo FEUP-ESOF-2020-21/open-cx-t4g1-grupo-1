@@ -26,7 +26,7 @@ class AddTalkFormState extends State<AddTalk> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Add a Talk'),
-        backgroundColor: AccentColor,
+        backgroundColor: MainColor,
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -54,7 +54,7 @@ class AddTalkFormState extends State<AddTalk> {
                     ),
                     decoration: InputDecoration(
                       hintText: "Title",
-                      focusColor: AccentColor,
+                      focusColor: MainColor,
                     ),
                     validator: (value) {
                       return (value.isEmpty) ? '' : null;
@@ -181,7 +181,7 @@ class AddTalkFormState extends State<AddTalk> {
           }
         },
         child: Icon(Icons.done),
-        backgroundColor: AccentColor,
+        backgroundColor: MainColor,
       ),
     );
   }

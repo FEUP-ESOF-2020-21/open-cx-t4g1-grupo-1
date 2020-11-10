@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
-        backgroundColor: AccentColor,
+        backgroundColor: MainColor,
       ),
       drawer: Drawer(
           child: ListView(
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               DrawerHeader(
                 decoration: BoxDecoration(
-                  color: AccentColor,
+                  color: MainColor,
                 ),
                 child: Text(
                   'AdOv',
@@ -67,15 +67,19 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ConferenceDetails(
+              darkTheme: true,
               padding: EdgeInsets.symmetric(vertical: 20),
             ),
             NextTalk(
+              darkTheme: true,
               padding: EdgeInsets.only(bottom: 20),
             ),
             ConferenceStats(
+              darkTheme: true,
               padding: EdgeInsets.only(bottom: 20),
             ),
             ConferenceSponsors(
+              darkTheme: true,
               padding: EdgeInsets.only(bottom: 20),
             ),
           ],

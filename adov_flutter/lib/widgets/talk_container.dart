@@ -11,8 +11,9 @@ const LocationTileHeight = 100.0;
 class TalkContainer extends StatelessWidget {
   final Talk talk;
   final bool darkTheme;
+  final bool nextTalk;
 
-  TalkContainer({this.talk, this.darkTheme = false});
+  TalkContainer({this.talk, this.darkTheme = false, this.nextTalk = false});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,9 @@ class TalkContainer extends StatelessWidget {
           children: [
             Text(
               talk.room.toUpperCase(),
-              style: Theme.of(context).textTheme.subtitle,
+              style: Theme.of(context).textTheme.subtitle.copyWith(
+                color: (nextTalk) ? TextColorLight : TextColorAccent
+              ),
             ),
             Text(
               DateFormat('dd/MM/yyyy ').format(talk.day) + talk.time.format(context),

@@ -19,7 +19,7 @@ class ConferenceStats extends StatelessWidget {
       child: Container(
         width: 400,
         margin: EdgeInsets.symmetric(horizontal: 20),
-        decoration: ComponentBoxStyle.create(radius: 15),
+        decoration: ComponentBoxStyle.create(radius: 15, shadow: true),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,12 +48,12 @@ class ConferenceStats extends StatelessWidget {
                         Text(
                           _numberOfDays(),
                           style: TitleTextStyle.copyWith(
-                            color: Colors.black,
+                            color: textColor,
                             fontSize: 64,
                             fontWeight: FontWeight.w400,
                           )
                         ),
-                        Text("Days"),
+                        Text("Days", style: SubTitleTextStyle.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -69,12 +69,12 @@ class ConferenceStats extends StatelessWidget {
                         Text(
                             _numberOfTalks(),
                             style: TitleTextStyle.copyWith(
-                              color: Colors.black,
+                              color: textColor,
                               fontSize: 64,
                               fontWeight: FontWeight.w400,
                             )
                         ),
-                        Text("Talks"),
+                        Text("Talks", style: SubTitleTextStyle.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

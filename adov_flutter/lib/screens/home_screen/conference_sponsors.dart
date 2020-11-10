@@ -20,7 +20,7 @@ class ConferenceSponsors extends StatelessWidget {
       child: Container(
         width: 400,
         margin: EdgeInsets.symmetric(horizontal: 20),
-        decoration: ComponentBoxStyle.create(radius: 15),
+        decoration: ComponentBoxStyle.create(radius: 15, shadow: true),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,9 @@ class ConferenceSponsors extends StatelessWidget {
                 decoration: ComponentBoxStyle.create(radius: 7.5, color: InnerComponentColor),
                 child: Text(
                   _getSponsors(),
-                  style: Body1TextStyle,
+                  style: Body1TextStyle.copyWith(
+                    color: textColor
+                  ),
                   textAlign: TextAlign.center,
                 ),
               )
