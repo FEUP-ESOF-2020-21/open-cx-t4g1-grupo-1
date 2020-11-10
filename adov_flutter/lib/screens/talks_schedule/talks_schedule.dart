@@ -5,6 +5,8 @@ import 'package:adov_flutter/widgets/talk_day.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../style.dart';
+
 
 class TalksSchedule extends StatelessWidget {
   final days = Talk.fetchDays();
@@ -17,6 +19,7 @@ class TalksSchedule extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Schedule'),
+          backgroundColor: AccentColor,
         ),
         body: ListView(
           physics: const AlwaysScrollableScrollPhysics(), // new

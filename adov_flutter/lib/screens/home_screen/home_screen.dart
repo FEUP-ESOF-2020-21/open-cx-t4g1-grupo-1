@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
+        backgroundColor: AccentColor,
       ),
       drawer: Drawer(
           child: ListView(
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: AccentColor,
                 ),
                 child: Text(
                   'AdOv',

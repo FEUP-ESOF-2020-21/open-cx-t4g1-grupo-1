@@ -5,6 +5,8 @@ import 'package:adov_flutter/widgets/image_banner.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../style.dart';
+
 class TalkDetail extends StatelessWidget {
   final int _talkID;
 
@@ -17,6 +19,7 @@ class TalkDetail extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(talk.title),
+        backgroundColor: AccentColor,
       ),
       body: SingleChildScrollView(
         child: Column(
