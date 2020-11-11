@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:toast/toast.dart';
 
+import '../../database.dart';
+
 TextEditingController titleController = TextEditingController();
 TextEditingController roomController = TextEditingController();
 TextEditingController descriptionController = TextEditingController();
@@ -64,7 +66,7 @@ class AddTalkFormState extends State<AddTalk> {
                 Divider(color: Colors.grey),
                 Padding(
                     padding:
-                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +80,8 @@ class AddTalkFormState extends State<AddTalk> {
                               size: 30,
                               color: Colors.grey,
                             ),
-                            Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
+                            Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5)),
                             Expanded(
                               child: DateTimeField(
                                 decoration: CustomInputDecorator.decorator(),
@@ -90,7 +93,8 @@ class AddTalkFormState extends State<AddTalk> {
                                   return showDatePicker(
                                       context: context,
                                       firstDate: DateTime(1900),
-                                      initialDate: currentValue ?? DateTime.now(),
+                                      initialDate:
+                                          currentValue ?? DateTime.now(),
                                       lastDate: DateTime(2100));
                                 },
                                 onChanged: (d) {
@@ -172,7 +176,8 @@ class AddTalkFormState extends State<AddTalk> {
         onPressed: () {
           if (_formKey.currentState.validate()) {
             // If the form is valid, display a Snackbar.
-            final snackBar = SnackBar(content: Text("Adding Talk - not implemented"));
+            final snackBar =
+                SnackBar(content: Text("Adding Talk - not implemented"));
             FocusScope.of(context).unfocus();
             _scaffoldKey.currentState.showSnackBar(snackBar);
             _addTalk();
@@ -194,9 +199,9 @@ _addTalk() {
   var room = roomController.text;
   var description = descriptionController.text;
 
-  var talk = Talk(20, title, room, _time, _date, description, 'assets/images/kiyomizu-dera.jpg');
-
-  // do something with this 'talk'
+  var talk = Talk(title, room, _time, _date, description,
+      'assets/images/kiyomizu-dera.jpg');
+  saveTalk(talk);
 }
 
 class AddTalk extends StatefulWidget {

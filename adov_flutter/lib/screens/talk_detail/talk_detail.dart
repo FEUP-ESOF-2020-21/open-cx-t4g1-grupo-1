@@ -2,9 +2,9 @@ import 'package:adov_flutter/models/talk.dart';
 import 'package:adov_flutter/screens/talk_detail/text_section.dart';
 import 'package:adov_flutter/screens/talk_detail/tile_overlay.dart';
 import 'package:adov_flutter/widgets/image_banner.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../style.dart';
 
 class TalkDetail extends StatelessWidget {
