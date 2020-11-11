@@ -12,6 +12,8 @@ List:
 11. As an app user i want to be presented with a welcoming initial screen and sign in as a staff member in order to reschedule talks and change talk locations when needed.
 12. As an app user i want to be presented with information about the conference that i am attending.
 13. As an app user i want to be presented with information about the next event that is happening on the conference without consulting the timetable.
+14. As a conference host i want to be able to add a talk to the conference
+15. As a conference host i want to be able to remove a talk from the conference
 
 
 ## **Story #1**
@@ -77,7 +79,7 @@ Low
 ## **Story #5**
 *As a conference host, I want to have the opportunity to reschedule a talk when a problem happens and still be able to inform the attendees about that change.*
 #### MockUp
-> Menu de mudar talk informations
+![No MockUp]()
 #### Acceptance Test
 ```gherkin
 Given I want to reschedule a talk,
@@ -92,7 +94,7 @@ High
 ## **Story #6**
 *As a conference host, I want to have the opportunity to change a talk’s room when I need to, and still notify the conference attendees about that change in time.*
 #### MockUp
-> Menu de mudar talk informations
+![No MockUp]()
 #### Acceptance Test
 ```gherkin
 Given I want to change the talk's room,
@@ -122,7 +124,7 @@ Medium
 ## **Story #8**
 *As a conference host, I want to to be able to send a notification when i make changes to a talk location.*
 #### MockUp
-> Criar alteração que origina a notificação.
+![No MockUp]()
 #### Acceptance Test
 ```gherkin
 Given I want to notify for room changes,
@@ -137,7 +139,7 @@ Medium
 ## **Story #9**
 *As a conference host, I want to be able to send a notification when my talk needs to be postponed.*
 #### MockUp
-> Criar alteração que origina a notificação.
+![No MockUp]()
 #### Acceptance Test
 ```gherkin
 Given I want to notify for schedule changes,
@@ -203,6 +205,36 @@ Medium
 Given I want to see the next event,
 When I enter the home page,
 Then I can easily know what is the next event.
+```
+#### Value
+Medium
+#### Effort
+> To Fill
+
+## **Story #14**
+*As a conference host i want to be able to add a talk to the conference*
+#### MockUp
+![Home page](https://i.imgur.com/2Mt4vwB.jpg)
+#### Acceptance Test
+```gherkin
+Given I want to add a talk to the conference,
+When I press the + floating button,
+Then I can fill in the details and add a talk.
+```
+#### Value
+Medium
+#### Effort
+> To Fill
+
+## **Story #15**
+*As a conference host i want to be able to delete a talk from the conference*
+#### MockUp
+![No MockUp]()
+#### Acceptance Test
+```gherkin
+Given I want to delete a talk from the conference,
+When I select a specific talk as a conference organizer,
+Then I can delete that talk.
 ```
 #### Value
 Medium

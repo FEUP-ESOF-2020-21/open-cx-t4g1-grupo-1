@@ -5,9 +5,10 @@ import 'package:adov_flutter/widgets/image_banner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../style.dart';
 
-/*class TalkDetail extends StatelessWidget {
-  final DocumentReference _talkID;
+class TalkDetail extends StatelessWidget {
+  final int _talkID;
 
   TalkDetail(this._talkID);
 
@@ -18,6 +19,7 @@ import 'package:flutter/material.dart';
     return Scaffold(
       appBar: AppBar(
         title: Text(talk.title),
+        backgroundColor: MainColor,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -42,4 +44,4 @@ import 'package:flutter/material.dart';
   List<Widget> textSections(Talk talk) {
     return [TextSection("Details", talk.details)];
   }
-}*/
+}
