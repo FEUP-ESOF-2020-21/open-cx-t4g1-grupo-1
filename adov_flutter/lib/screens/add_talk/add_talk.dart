@@ -1,5 +1,5 @@
-import 'package:adov_flutter/input_decorators/form_input_decorator.dart';
 import 'package:adov_flutter/models/talk.dart';
+import 'package:adov_flutter/style.dart';
 import 'package:adov_flutter/widgets/date_time_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +26,7 @@ class AddTalkFormState extends State<AddTalk> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Add a Talk'),
+        backgroundColor: MainColor,
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -53,6 +54,7 @@ class AddTalkFormState extends State<AddTalk> {
                     ),
                     decoration: InputDecoration(
                       hintText: "Title",
+                      focusColor: MainColor,
                     ),
                     validator: (value) {
                       return (value.isEmpty) ? '' : null;
@@ -179,7 +181,7 @@ class AddTalkFormState extends State<AddTalk> {
           }
         },
         child: Icon(Icons.done),
-        backgroundColor: Colors.red,
+        backgroundColor: MainColor,
       ),
     );
   }
