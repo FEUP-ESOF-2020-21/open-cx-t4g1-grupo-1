@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'models/talk.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 final collectionReference = FirebaseFirestore.instance.collection('talks');
 
@@ -56,3 +57,5 @@ Talk createTalk(dbTalk, String id) {
 Talk createTalkFromSnapshot(DocumentSnapshot data) {
   return Talk(data["title"], data["room"], TimeOfDay(hour: data["hour"], minute: data["min"]), DateTime(data["year"], data["month"], data["day"]), data["details"], data["imagePath"]);
 }
+
+

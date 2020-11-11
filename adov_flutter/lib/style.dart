@@ -39,7 +39,7 @@ class ComponentBoxStyle {
 }
 
 class CustomInputDecorator extends InputDecoration {
-  static InputDecoration decorator() {
+  static InputDecoration decorator(String label) {
     return InputDecoration(
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5.0),
@@ -48,7 +48,7 @@ class CustomInputDecorator extends InputDecoration {
           width: 1.5,
         ),
       ),
-      labelText: "Talk Date",
+      labelText: label,
       fillColor: Colors.white,
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5.0),

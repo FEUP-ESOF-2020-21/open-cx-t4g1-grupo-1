@@ -84,7 +84,7 @@ class AddTalkFormState extends State<AddTalk> {
                                 padding: EdgeInsets.symmetric(horizontal: 5)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: CustomInputDecorator.decorator(),
+                                decoration: CustomInputDecorator.decorator("Talk Date"),
                                 format: DateFormat("dd/MM/yyyy"),
                                 validator: (date) {
                                   return (date == null) ? "" : null;
@@ -113,7 +113,7 @@ class AddTalkFormState extends State<AddTalk> {
                                 padding: EdgeInsets.symmetric(horizontal: 20)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: CustomInputDecorator.decorator(),
+                                decoration: CustomInputDecorator.decorator("Talk Date"),
                                 format: DateFormat("HH:mm"),
                                 validator: (time) {
                                   return (time == null) ? "" : null;
@@ -144,7 +144,7 @@ class AddTalkFormState extends State<AddTalk> {
                     style: TextStyle(
                       fontSize: 18.0,
                     ),
-                    decoration: CustomInputDecorator.decorator(),
+                    decoration: CustomInputDecorator.decorator("Talk Room"),
                     validator: (value) {
                       return (value.isEmpty) ? '' : null;
                     },
@@ -161,7 +161,7 @@ class AddTalkFormState extends State<AddTalk> {
                     style: TextStyle(
                       fontSize: 18.0,
                     ),
-                    decoration: CustomInputDecorator.decorator(),
+                    decoration: CustomInputDecorator.decorator("Description"),
                     validator: (value) {
                       return (value.isEmpty) ? '' : null;
                     },
@@ -177,10 +177,11 @@ class AddTalkFormState extends State<AddTalk> {
           if (_formKey.currentState.validate()) {
             // If the form is valid, display a Snackbar.
             final snackBar =
-                SnackBar(content: Text("Adding Talk - not implemented"));
+                SnackBar(content: Text("Adding Talk..."));
             FocusScope.of(context).unfocus();
             _scaffoldKey.currentState.showSnackBar(snackBar);
             _addTalk();
+            Navigator.pop(context);
           } else {
             Toast.show("Some fields are not filled", context);
           }
