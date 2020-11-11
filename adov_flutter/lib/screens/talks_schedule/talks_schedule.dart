@@ -7,6 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../style.dart';
+
 class TalksSchedule extends StatelessWidget {
   List talks = [];
 
@@ -63,10 +65,10 @@ class TalksSchedule extends StatelessWidget {
             margin: const EdgeInsets.only(right: 20.0, bottom: 20.0),
             decoration: ComponentBoxStyle.create(
               radius: 8,
-              color: (talk == nextTalk) ? Colors.red : MainColor
+              color: (talk == true) ? Colors.red : MainColor
             ),
             width: 270,
-            child: TalkContainer(talk: talk, darkTheme: true, nextTalk: (talk == nextTalk),),
+            child: TalkContainer(talk: talk, darkTheme: true, nextTalk: (talk == true),),
           )
       ),
     );

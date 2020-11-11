@@ -31,6 +31,7 @@ class Talk {
     };
   }
 
+  /*
   static Talk fetchByID(int id) {
     List<Talk> list = fetchAll();
     for (var i = 0; i < list.length; ++i) {
@@ -39,7 +40,9 @@ class Talk {
     }
     return null;
   }
+   */
 
+  /*
   static List<Talk> fetchByDay(DateTime day) {
     List<Talk> list = [];
     fetchAll().forEach((element) {
@@ -53,7 +56,9 @@ class Talk {
     });
     return list;
   }
+   */
 
+  /*
   static Set<DateTime> fetchDays() {
     List<Talk> list = fetchAll();
     list.sort((a, b) {
@@ -66,6 +71,7 @@ class Talk {
     }
     return days;
   }
+   */
 
   @override
   bool operator ==(Object other) =>
@@ -75,6 +81,7 @@ class Talk {
   @override
   int get hashCode => id.hashCode;
 
+  /*
   static Talk getNextTalk() {
     var day = DateTime.now();
     var days = Talk.fetchDays();
@@ -98,4 +105,5 @@ class Talk {
     }
     return null;
   }
+   */
 }

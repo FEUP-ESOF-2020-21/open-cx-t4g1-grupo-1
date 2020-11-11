@@ -36,7 +36,7 @@ RouteFactory _routes() {
         screen = TalksSchedule();
         break;
       case TalkDetailRoute:
-        //screen = TalkDetail(arguments['id']);
+        screen = TalkDetail(arguments['id']);
         break;
       case AddTalkRoute:
         screen = AddTalk();

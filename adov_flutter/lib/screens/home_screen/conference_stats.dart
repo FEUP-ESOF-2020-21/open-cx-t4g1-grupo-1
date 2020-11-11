@@ -86,11 +86,15 @@ class ConferenceStats extends StatelessWidget {
     );
   }
 
+  // TODO - Integration with database -> count number of talks and number of days
+
   String _numberOfDays() {
-    return Talk.fetchDays().length.toString();
+    // return Talk.fetchDays().length.toString();
+    return "2";
   }
 
   String _numberOfTalks() {
-    return Talk.fetchAll().length.toString();
+    // return Talk.fetchAll().length.toString();
+    return "3";
   }
 }

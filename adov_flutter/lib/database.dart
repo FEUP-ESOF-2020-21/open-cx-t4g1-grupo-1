@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'models/talk.dart';
 import 'package:flutter/material.dart';
@@ -10,18 +11,19 @@ Future<DocumentReference> saveTalk(Talk talk) {
   return documentReference;
 }
 
-Future getTalks() async {
-  List talks = [];
+Future<List<Talk>> getTalks() async {
+  List<Talk> talks = [];
 
   await collectionReference.get().then((querySnapshot) {
     querySnapshot.docs.forEach((element) {
-      talks.add(createTalk(element.data()));
+      talks.add(createTalk(element.data(), element.id));
+      // print("getTalks(): " + element.data().toString());
     });
   });
   return talks;
 }
 
-Talk createTalk(dbTalk) {
+Talk createTalk(dbTalk, String id) {
   Map<String, dynamic> attributes = {
     'title': '',
     'room': '',
@@ -38,11 +40,19 @@ Talk createTalk(dbTalk) {
 
   var time = TimeOfDay(hour: attributes['hour'], minute: attributes['min']);
 
-  var day = new DateTime.utc(
+  var day = DateTime(
       attributes['year'], attributes['month'], attributes['day']);
 
-  Talk talk = new Talk(attributes['title'], attributes['room'], time, day,
+  Talk talk = Talk(attributes['title'], attributes['room'], time, day,
       attributes['details'], attributes['imagePath']);
 
+  talk.setId(collectionReference.doc(id));
+
+  // print("CreateTalk(): ID: " + id + "\n" + talk.toJson().toString());
+
   return talk;
+}
+
+Talk createTalkFromSnapshot(DocumentSnapshot data) {
+  return Talk(data["title"], data["room"], TimeOfDay(hour: data["hour"], minute: data["min"]), DateTime(data["year"], data["month"], data["day"]), data["details"], data["imagePath"]);
 }
