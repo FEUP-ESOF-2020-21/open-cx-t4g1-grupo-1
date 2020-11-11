@@ -1,35 +1,23 @@
-import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'models/talk.dart';
 import 'package:flutter/material.dart';
 
-final databaseReference = FirebaseDatabase.instance.reference();
+final collectionReference = FirebaseFirestore.instance.collection('talks');
 
-DatabaseReference saveTalk(Talk talk) {
-  var id = databaseReference.child('talks/').push();
+Future<DocumentReference> saveTalk(Talk talk) {
+  var documentReference = collectionReference.add(talk.toJson());
 
-  id.set(talk.toJson());
-
-  return id;
+  return documentReference;
 }
 
-Future<List<Talk>> getAllTalks() async {
-  /*we have to wait for the db to be queried
-                                          we might have to wait for this to be finished*/
-  DataSnapshot dataSnapshot =
-      await databaseReference /* wait for this to finish */
-          .child('talks/')
-          .once();
+Future getTalks() async {
+  List talks = [];
 
-  List<Talk> talks = [];
-
-  if (dataSnapshot.value != null) {
-    dataSnapshot.value.forEach((key, value) {
-      Talk talk = createTalk(value);
-      talk.setId(databaseReference.child('talks/' + key));
-      talks.add(talk);
+  await collectionReference.get().then((querySnapshot) {
+    querySnapshot.docs.forEach((element) {
+      talks.add(createTalk(element.data()));
     });
-  }
-
+  });
   return talks;
 }
 
