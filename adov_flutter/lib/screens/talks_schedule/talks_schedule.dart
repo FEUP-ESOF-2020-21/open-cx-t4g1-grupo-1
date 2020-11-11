@@ -2,6 +2,7 @@ import 'package:adov_flutter/app.dart';
 import 'package:adov_flutter/models/talk.dart';
 import 'package:adov_flutter/widgets/talk_container.dart';
 import 'package:adov_flutter/widgets/talk_day.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -82,7 +83,7 @@ class TalksSchedule extends StatelessWidget {
       );
   }
 
-  _onLocationTap(BuildContext context, int locationID) {
+  _onLocationTap(BuildContext context, DatabaseReference locationID) {
     Navigator.pushNamed(context, TalkDetailRoute,
         arguments: {"id": locationID});
   }
