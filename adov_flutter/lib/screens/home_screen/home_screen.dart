@@ -1,4 +1,5 @@
 import 'package:adov_flutter/app.dart';
+import 'package:adov_flutter/database/talks_database.dart';
 import 'package:adov_flutter/screens/home_screen/conference_sponsors.dart';
 import 'package:adov_flutter/screens/home_screen/conference_stats.dart';
 import 'package:adov_flutter/screens/home_screen/next_talk.dart';
@@ -45,6 +46,12 @@ class HomeScreen extends StatelessWidget {
                 title: Text('Edit Talks', style: ListItemDrawerStyle,),
                 onTap: () => Navigator.pop(context),
               ),
+              /*
+              ListTile(
+                leading: Icon(Icons.developer_board),
+                title: Text('Developer Option: Add Talks to Database', style: ListItemDrawerStyle,),
+                onTap: () => TalksDatabase.auxiliar(),
+              ),*/
               ListTile(
                 leading: Icon(Icons.logout),
                 title: Text('Logout', style: ListItemDrawerStyle,),
