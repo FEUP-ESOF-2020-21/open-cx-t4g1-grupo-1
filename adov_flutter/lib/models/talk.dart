@@ -10,8 +10,7 @@ class Talk {
   final String details;
   final String imagePath;
 
-  Talk(
-      this.title, this.room, this.time, this.day, this.details, this.imagePath);
+  Talk(this.title, this.room, this.time, this.day, this.details, this.imagePath);
 
   void setId(DocumentReference id) {
     this.id = id;

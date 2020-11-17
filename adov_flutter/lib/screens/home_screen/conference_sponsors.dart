@@ -1,4 +1,5 @@
 import 'package:adov_flutter/models/Conference.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../style.dart';
@@ -6,8 +7,6 @@ import '../../style.dart';
 class ConferenceSponsors extends StatelessWidget {
   final bool darkTheme;
   final EdgeInsets padding;
-
-  final List<String> sponsors = Conference.fetch().sponsors;
 
   ConferenceSponsors({this.darkTheme = false, this.padding});
 
@@ -34,17 +33,26 @@ class ConferenceSponsors extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                decoration: ComponentBoxStyle.create(radius: 7.5, color: InnerComponentColor),
-                child: Text(
-                  _getSponsors(),
-                  style: Body1TextStyle.copyWith(
-                    color: textColor
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+              StreamBuilder(
+                stream: FirebaseFirestore.instance.doc("conference/details").snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Text("Loading...");
+                  }
+                  String sponsors = _getSponsors(snapshot.data['sponsors']);
+                  return Container(
+                    margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    decoration: ComponentBoxStyle.create(radius: 7.5, color: InnerComponentColor),
+                    child: Text(
+                      sponsors,
+                      style: Body1TextStyle.copyWith(
+                          color: textColor
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  );
+                },
               )
             ]
         ),
@@ -52,12 +60,13 @@ class ConferenceSponsors extends StatelessWidget {
     );
   }
 
-  String _getSponsors() {
+  String _getSponsors(List<dynamic> data) {
     String string = "";
-    for (var i = 0; i < this.sponsors.length - 1; i++) {
-      string += this.sponsors[i].toString() + " | ";
+    var sponsors = data.map((itemWord) => itemWord as String).toList();
+    for (var i = 0; i < sponsors.length - 1; i++) {
+      string += sponsors[i].toString() + " | ";
     }
-    string += this.sponsors[this.sponsors.length - 1];
+    string += sponsors[sponsors.length - 1];
     return string;
   }
 }
