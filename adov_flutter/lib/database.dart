@@ -6,12 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 final collectionReference = FirebaseFirestore.instance.collection('talks');
 
-Future<DocumentReference> saveTalk(Talk talk) {
-  var documentReference = collectionReference.add(talk.toJson());
-
-  return documentReference;
-}
-
 Future<List<Talk>> getTalks() async {
   List<Talk> talks = [];
 

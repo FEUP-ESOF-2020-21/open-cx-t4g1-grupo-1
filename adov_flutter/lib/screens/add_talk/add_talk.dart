@@ -1,3 +1,4 @@
+import 'package:adov_flutter/database/talks_database.dart';
 import 'package:adov_flutter/models/talk.dart';
 import 'package:adov_flutter/style.dart';
 import 'package:adov_flutter/widgets/date_time_picker.dart';
@@ -202,7 +203,7 @@ _addTalk() {
 
   var talk = Talk(title, room, _time, _date, description,
       'assets/images/kiyomizu-dera.jpg');
-  saveTalk(talk);
+  TalksDatabase.saveTalk(talk);
 }
 
 class AddTalk extends StatefulWidget {
