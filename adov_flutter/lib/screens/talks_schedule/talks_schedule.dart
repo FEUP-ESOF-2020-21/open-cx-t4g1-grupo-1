@@ -59,7 +59,7 @@ class TalksSchedule extends StatelessWidget {
               radius: 8,
               color: (talk == nextTalk) ? Colors.red : MainColor
             ),
-            width: 270,
+            width: 300,
             child: TalkContainer(talk: talk, darkTheme: true, nextTalk: (talk == nextTalk),),
           )
       ),
@@ -74,7 +74,7 @@ class TalksSchedule extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 25),
+            padding: EdgeInsets.only(left: 5),
             child: TalkDay(talks[0], day, false),
           ),
           Expanded(
@@ -88,8 +88,6 @@ class TalksSchedule extends StatelessWidget {
         ],
       );
   }
-
-
 
   _onLocationTap(BuildContext context, var locationID) {
     Navigator.pushNamed(context, TalkDetailRoute,
