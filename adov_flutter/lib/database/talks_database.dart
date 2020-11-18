@@ -103,6 +103,37 @@ class TalksDatabase {
     return documentReference;
   }
 
+  static deleteTalk(Talk talk) async {
+    talk.id.delete();
+    await conferenceRef.get().then((value) {
+      conferenceRef.update({'talks': --value.data()['talks']});
+    });
+
+    var days = [];
+    await collectionReference.get().then((querySnapshot) {
+      querySnapshot.docs.forEach((element) {
+        days.add(
+            DateTime(
+              element.data()["year"],
+              element.data()["month"],
+              element.data()["day"],)
+        );
+      });
+      var dayPresent = false;
+      days.forEach((element) {
+        if ((element.day == talk.day.day) && (element.month == talk.day.month) && (element.year == talk.day.year)) {
+          dayPresent = true;
+          return;
+        }
+      });
+      if (!dayPresent)
+        conferenceRef.get().then((value) {
+          conferenceRef.update({'days': --value.data()['days']});
+        });
+    });
+
+  }
+
   static Talk createTalkFromSnapshot(DocumentSnapshot data) {
     var talk = Talk(data["title"], data["room"], TimeOfDay(hour: data["hour"], minute: data["min"]), DateTime(data["year"], data["month"], data["day"]), data["details"], data["imagePath"]);
     talk.setId(data.reference);
@@ -114,7 +145,7 @@ class TalksDatabase {
       Talk("Talk 1", "B202", TimeOfDay(hour: 15, minute: 15), DateTime(2020, 12, 15),
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in libero nulla. Pellentesque pharetra ornare ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque et tortor urna. Aenean ultrices varius tortor, nec imperdiet elit venenatis at. Donec iaculis dolor vitae egestas efficitur. Pellentesque fermentum tortor in mauris eleifend, sed tempor ex faucibus. Curabitur varius porttitor dignissim. Duis risus lorem, luctus et tellus et, lobortis laoreet ligula. Donec sollicitudin nec magna non imperdiet."
           , 'assets/images/kiyomizu-dera.jpg'),
-      Talk("Talk 2", "B203", TimeOfDay(hour: 15, minute: 15), DateTime(2020, 12, 15), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
+      Talk("Talk 2", "B203", TimeOfDay(hour: 15, minute: 20), DateTime(2020, 12, 15), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
       Talk("Talk 3", "B204", TimeOfDay(hour: 16, minute: 15), DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
       Talk("Talk 4", "B205", TimeOfDay(hour: 13, minute: 15), DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),
       Talk("Talk 5", "B206", TimeOfDay(hour: 10, minute: 15), DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/kiyomizu-dera.jpg'),

@@ -44,7 +44,10 @@ class HomeScreen extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.edit),
                 title: Text('Edit Talks', style: ListItemDrawerStyle,),
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, EditTalksRoute);
+                },
               ),
               ListTile(
                 leading: Icon(Icons.developer_board),
