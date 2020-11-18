@@ -52,12 +52,12 @@ class HomeScreen extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.developer_board),
                 title: Text('Developer Option: Add Talks to Database', style: ListItemDrawerStyle,),
-                onTap: () => /*TalksDatabase.addTalksToDatabase() */ null,
+                onTap: () => TalksDatabase.addTalksToDatabase(),
               ),
               ListTile(
                 leading: Icon(Icons.developer_board),
                 title: Text('Developer Option: Remove Talks from Database', style: ListItemDrawerStyle,),
-                onTap: () => /*TalksDatabase.removeTalksFromDatabase() */ null,
+                onTap: () => TalksDatabase.removeTalksFromDatabase(),
               ),
               ListTile(
                 leading: Icon(Icons.logout),
