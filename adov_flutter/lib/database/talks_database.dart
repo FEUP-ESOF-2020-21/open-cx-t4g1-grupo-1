@@ -102,4 +102,10 @@ class TalksDatabase {
 
     return documentReference;
   }
+
+  static Talk createTalkFromSnapshot(DocumentSnapshot data) {
+    var talk = Talk(data["title"], data["room"], TimeOfDay(hour: data["hour"], minute: data["min"]), DateTime(data["year"], data["month"], data["day"]), data["details"], data["imagePath"]);
+    talk.setId(data.reference);
+    return talk;
+  }
 }

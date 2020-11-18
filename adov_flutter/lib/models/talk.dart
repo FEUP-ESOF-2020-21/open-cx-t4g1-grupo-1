@@ -30,6 +30,44 @@ class Talk {
     };
   }
 
+  static List<DateTime> getDays(List<Talk> talks) {
+    Set<DateTime> days = Set();
+    talks.forEach((element) {
+      days.add(DateTime(element.day.year, element.day.month, element.day.day));
+    });
+    return days.toList();
+  }
+
+  static List<Talk> getTalksOnDay(List<Talk> talks, DateTime date) {
+    List<Talk> returnTalks = [];
+    talks.forEach((element) {
+      if ((element.day.day == date.day) && (element.day.month == date.month) && (element.day.year == date.year))
+        returnTalks.add(element);
+    });
+    return returnTalks;
+  }
+
+  static Talk getNextTalk(List<Talk> talks, List<DateTime> days) {
+    var day = DateTime.now();
+
+    var talksDay = getTalksOnDay(talks, DateTime(day.year, day.month, day.day));
+
+    if (talksDay.isNotEmpty) {
+      for (var talk in talksDay) {
+        if (day.isBefore(DateTime(talk.day.year, talk.day.month, talk.day.day, talk.time.hour, talk.time.minute))) {
+          return talk;
+        }
+      }
+    }
+
+    for ( var i = 0; i < days.length; i++ ) {
+      if (days.elementAt(i).isAfter(day)) {
+        return getTalksOnDay(talks, days.elementAt(i))[0];
+      }
+    }
+    return null;
+  }
+
   /*
   static Talk fetchByID(int id) {
     List<Talk> list = fetchAll();

@@ -1,11 +1,11 @@
 // app.dart
 
-import 'package:adov_flutter/screens/home_screen/home_screen.dart';
-import 'package:adov_flutter/screens/talks_schedule/talks_schedule.dart';
 import 'package:adov_flutter/screens/add_talk/add_talk.dart';
+import 'package:adov_flutter/screens/home_screen/home_screen.dart';
 import 'package:adov_flutter/screens/talk_detail/talk_detail.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:adov_flutter/screens/talks_schedule/talks_schedule.dart';
 import 'package:flutter/material.dart';
+
 import 'style.dart';
 
 const HomeScreenRoute = '/';

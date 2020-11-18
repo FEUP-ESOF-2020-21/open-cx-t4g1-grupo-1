@@ -1,13 +1,12 @@
 import 'package:adov_flutter/app.dart';
-import 'package:adov_flutter/database/talks_database.dart';
 import 'package:adov_flutter/screens/home_screen/conference_sponsors.dart';
 import 'package:adov_flutter/screens/home_screen/conference_stats.dart';
 import 'package:adov_flutter/screens/home_screen/next_talk.dart';
-import '../../app.dart';
-import '../../style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app.dart';
+import '../../style.dart';
 import 'conference_details.dart';
 
 class HomeScreen extends StatelessWidget {
