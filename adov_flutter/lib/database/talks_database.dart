@@ -72,66 +72,15 @@ class TalksDatabase {
   }
 
   static Future<DocumentReference> saveTalk(Talk talk) async {
-    await conferenceRef.get().then((value) {
-      conferenceRef.update({'talks': ++value.data()['talks']});
-    });
-    var days = [];
-    await collectionReference.get().then((querySnapshot) {
-      querySnapshot.docs.forEach((element) {
-        days.add(
-          DateTime(
-            element.data()["year"],
-            element.data()["month"],
-            element.data()["day"],)
-        );
-      });
-      var dayPresent = false;
-      days.forEach((element) {
-        if ((element.day == talk.day.day) && (element.month == talk.day.month) && (element.year == talk.day.year)) {
-          dayPresent = true;
-          return;
-        }
-      });
-      if (!dayPresent)
-        conferenceRef.get().then((value) {
-          conferenceRef.update({'days': ++value.data()['days']});
-        });
-    });
-
     var documentReference = collectionReference.add(talk.toJson());
+    updateConferenceDetails();
 
     return documentReference;
   }
 
   static deleteTalk(Talk talk) async {
     talk.id.delete();
-    await conferenceRef.get().then((value) {
-      conferenceRef.update({'talks': --value.data()['talks']});
-    });
-
-    var days = [];
-    await collectionReference.get().then((querySnapshot) {
-      querySnapshot.docs.forEach((element) {
-        days.add(
-            DateTime(
-              element.data()["year"],
-              element.data()["month"],
-              element.data()["day"],)
-        );
-      });
-      var dayPresent = false;
-      days.forEach((element) {
-        if ((element.day == talk.day.day) && (element.month == talk.day.month) && (element.year == talk.day.year)) {
-          dayPresent = true;
-          return;
-        }
-      });
-      if (!dayPresent)
-        conferenceRef.get().then((value) {
-          conferenceRef.update({'days': --value.data()['days']});
-        });
-    });
-
+    updateConferenceDetails();
   }
 
   static Talk createTalkFromSnapshot(DocumentSnapshot data) {
@@ -185,5 +134,34 @@ class TalksDatabase {
       'days': 0,
       'talks': 0,
     });
+  }
+
+  static updateConferenceDetails() async {
+    await collectionReference.get().then((querySnapshot) {
+      Set<DateTime> days = Set();
+      querySnapshot.docs.forEach((element) {
+        days.add(
+            DateTime(
+              element.data()["year"],
+              element.data()["month"],
+              element.data()["day"],)
+        );
+      });
+      conferenceRef.update({"days": days.length});
+    });
+
+    await collectionReference.get().then((value) {
+      int talks = 0;
+      value.docs.forEach((element) {
+        talks++;
+      });
+      conferenceRef.update({"talks": talks});
+    });
+  }
+
+  static editTalk(Talk talk) {
+    var json = talk.toJson();
+    talk.id.update(json);
+    updateConferenceDetails();
   }
 }

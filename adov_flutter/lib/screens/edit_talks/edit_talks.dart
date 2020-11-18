@@ -45,23 +45,13 @@ class EditTalks extends StatelessWidget {
                   _itemBuilder(context, talks[index], nextTalk),
               itemCount: talks.length,
             );
-
-            return Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) =>
-                    _itemBuilder(context, talks[index], nextTalk),
-                itemCount: talks.length,
-              ),
-            );
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, AddTalkRoute);
         },
         child: Icon(Icons.add),
-        backgroundColor: AccentColor,
+        backgroundColor: MainColor,
       ),
     );
   }
@@ -94,7 +84,7 @@ class EditTalks extends StatelessWidget {
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                 minimumSize: MaterialStateProperty.all<Size>(Size(70, 70)),
               ),
-              onPressed: null,
+              onPressed: () => Navigator.pushNamed(context, EditTalkRoute, arguments: {"id": talk}),
               child: Icon(Icons.edit),
             ),
             ElevatedButton(

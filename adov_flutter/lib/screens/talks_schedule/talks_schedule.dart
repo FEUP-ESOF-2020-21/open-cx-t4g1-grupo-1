@@ -44,13 +44,6 @@ class TalksSchedule extends StatelessWidget {
               ],
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, AddTalkRoute);
-        },
-        child: Icon(Icons.add),
-        backgroundColor: AccentColor,
-      ),
     );
   }
 

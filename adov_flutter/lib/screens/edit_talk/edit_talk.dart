@@ -2,6 +2,7 @@ import 'package:adov_flutter/database/talks_database.dart';
 import 'package:adov_flutter/models/talk.dart';
 import 'package:adov_flutter/style.dart';
 import 'package:adov_flutter/widgets/date_time_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -11,15 +12,30 @@ import 'package:toast/toast.dart';
 TextEditingController titleController = TextEditingController();
 TextEditingController roomController = TextEditingController();
 TextEditingController descriptionController = TextEditingController();
+TextEditingController timeController = TextEditingController();
+TextEditingController dateController = TextEditingController();
 DateTime selectedDate = DateTime(2020);
 DateTime selectedTime = DateTime(2020);
 
-class AddTalkFormState extends State<AddTalk> {
+class EditTalkFormState extends State<EditTalk> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
+  final Talk talk;
+
+  EditTalkFormState(this.talk);
 
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    titleController.text = talk.title;
+    roomController.text = talk.room;
+    descriptionController.text = talk.details;
+    selectedDate = talk.day;
+    selectedTime = DateTime(2020, 1, 1, talk.time.hour, talk.time.minute);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +43,7 @@ class AddTalkFormState extends State<AddTalk> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('Add a Talk'),
+        title: Text('Edit a Talk'),
         backgroundColor: MainColor,
       ),
       body: SingleChildScrollView(
@@ -66,7 +82,7 @@ class AddTalkFormState extends State<AddTalk> {
                 Divider(color: Colors.grey),
                 Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,17 +105,19 @@ class AddTalkFormState extends State<AddTalk> {
                                 validator: (date) {
                                   return (date == null) ? "" : null;
                                 },
+                                /* initialValue: talk.day, */
                                 onShowPicker: (context, currentValue) {
                                   return showDatePicker(
                                       context: context,
                                       firstDate: DateTime(1900),
                                       initialDate:
-                                          currentValue ?? DateTime.now(),
+                                      currentValue ?? DateTime.now(),
                                       lastDate: DateTime(2100));
                                 },
                                 onChanged: (d) {
                                   selectedDate = d;
                                 },
+                                initialValue: talk.day,
                               ),
                             ),
                           ],
@@ -118,9 +136,11 @@ class AddTalkFormState extends State<AddTalk> {
                                 validator: (time) {
                                   return (time == null) ? "" : null;
                                 },
+                                /* initialValue: DateTime(2020, 1, 1, talk.time.hour, talk.time.minute), */
                                 onChanged: (t) {
                                   selectedTime = t;
                                 },
+                                initialValue: DateTime(2020, 1, 1, talk.time.hour, talk.time.minute),
                                 onShowPicker: (context, currentValue) async {
                                   final time = await showTimePicker(
                                     context: context,
@@ -148,6 +168,7 @@ class AddTalkFormState extends State<AddTalk> {
                     validator: (value) {
                       return (value.isEmpty) ? '' : null;
                     },
+
                   ),
                 ),
                 Divider(color: Colors.grey),
@@ -177,16 +198,14 @@ class AddTalkFormState extends State<AddTalk> {
           if (_formKey.currentState.validate()) {
             // If the form is valid, display a Snackbar.
             final snackBar =
-                SnackBar(content: Text("Adding Talk..."));
+            SnackBar(content: Text("Updating Talk..."));
             FocusScope.of(context).unfocus();
             _scaffoldKey.currentState.showSnackBar(snackBar);
-            _addTalk();
+            _editTalk(talk.id);
+
             Future.delayed(Duration(seconds: 1), () {
               Navigator.pop(context);
               _formKey.currentState.reset();
-              titleController.clear();
-              roomController.clear();
-              descriptionController.clear();
             });
           } else {
             Toast.show("Some fields are not filled", context);
@@ -199,7 +218,7 @@ class AddTalkFormState extends State<AddTalk> {
   }
 }
 
-_addTalk() {
+_editTalk(DocumentReference id) {
   var title = titleController.text;
   var _date = selectedDate;
   var _time = TimeOfDay(hour: selectedTime.hour, minute: selectedTime.minute);
@@ -208,12 +227,17 @@ _addTalk() {
 
   var talk = Talk(title, room, _time, _date, description,
       'assets/images/kiyomizu-dera.jpg');
-  TalksDatabase.saveTalk(talk);
+  talk.setId(id);
+  TalksDatabase.editTalk(talk);
 }
 
-class AddTalk extends StatefulWidget {
+class EditTalk extends StatefulWidget {
+  final Talk talk;
+
+  EditTalk(this.talk);
+
   @override
   State<StatefulWidget> createState() {
-    return AddTalkFormState();
+    return EditTalkFormState(talk);
   }
 }
