@@ -35,6 +35,8 @@ class NextTalk extends StatelessWidget {
           List<DateTime> days = Talk.getDays(talks);
           Talk nextTalk = Talk.getNextTalk(talks, days);
 
+          if (nextTalk == null) return Container();
+
           return Padding(
             padding: this.padding,
             child: Container(

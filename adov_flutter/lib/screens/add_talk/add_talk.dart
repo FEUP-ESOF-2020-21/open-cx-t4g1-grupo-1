@@ -113,7 +113,7 @@ class AddTalkFormState extends State<AddTalk> {
                                 padding: EdgeInsets.symmetric(horizontal: 20)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: CustomInputDecorator.decorator("Talk Date"),
+                                decoration: CustomInputDecorator.decorator("Talk Time"),
                                 format: DateFormat("HH:mm"),
                                 validator: (time) {
                                   return (time == null) ? "" : null;

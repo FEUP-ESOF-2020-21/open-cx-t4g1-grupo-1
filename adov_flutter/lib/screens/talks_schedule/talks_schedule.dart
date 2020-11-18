@@ -13,8 +13,6 @@ class TalksSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScrollController _controller = new ScrollController();
-
-    int day = 1;
     return Scaffold(
       appBar: AppBar(
         title: Text('Schedule'),
@@ -34,6 +32,7 @@ class TalksSchedule extends StatelessWidget {
             });
             List<DateTime> days = Talk.getDays(talks);
             Talk nextTalk = Talk.getNextTalk(talks, days);
+            int day = 1;
 
             return ListView(
               physics: const AlwaysScrollableScrollPhysics(),
