@@ -2,11 +2,11 @@ import 'package:adov_flutter/app.dart';
 import 'package:adov_flutter/screens/home_screen/conference_sponsors.dart';
 import 'package:adov_flutter/screens/home_screen/conference_stats.dart';
 import 'package:adov_flutter/screens/home_screen/next_talk.dart';
-import '../../app.dart';
-import '../../style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../app.dart';
+import '../../style.dart';
 import 'conference_details.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -43,8 +43,23 @@ class HomeScreen extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.edit),
                 title: Text('Edit Talks', style: ListItemDrawerStyle,),
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, EditTalksRoute);
+                },
               ),
+              /*
+              ListTile(
+                leading: Icon(Icons.developer_board),
+                title: Text('Developer Option: Add Talks to Database', style: ListItemDrawerStyle,),
+                onTap: () => TalksDatabase.addTalksToDatabase(),
+              ),
+              ListTile(
+                leading: Icon(Icons.developer_board),
+                title: Text('Developer Option: Remove Talks from Database', style: ListItemDrawerStyle,),
+                onTap: () => TalksDatabase.removeTalksFromDatabase(),
+              ),
+               */
               ListTile(
                 leading: Icon(Icons.logout),
                 title: Text('Logout', style: ListItemDrawerStyle,),

@@ -10,8 +10,7 @@ class Talk {
   final String details;
   final String imagePath;
 
-  Talk(
-      this.title, this.room, this.time, this.day, this.details, this.imagePath);
+  Talk(this.title, this.room, this.time, this.day, this.details, this.imagePath);
 
   void setId(DocumentReference id) {
     this.id = id;
@@ -31,65 +30,28 @@ class Talk {
     };
   }
 
-  /*
-  static Talk fetchByID(int id) {
-    List<Talk> list = fetchAll();
-    for (var i = 0; i < list.length; ++i) {
-      if (list[i].id == id)
-        return list[i];
-    }
-    return null;
-  }
-   */
-
-  /*
-  static List<Talk> fetchByDay(DateTime day) {
-    List<Talk> list = [];
-    fetchAll().forEach((element) {
-      if (element.day.compareTo(day) == 0) {
-        list.add(element);
-      }
+  static List<DateTime> getDays(List<Talk> talks) {
+    Set<DateTime> days = Set();
+    talks.forEach((element) {
+      days.add(DateTime(element.day.year, element.day.month, element.day.day));
     });
-    list.sort((a, b) {
-      return DateTime(a.day.year, a.day.month, a.day.day, a.time.hour, a.time.minute)
-          .compareTo(DateTime(b.day.year, b.day.month, b.day.day, b.time.hour, b.time.minute));
-    });
-    return list;
+    return days.toList();
   }
-   */
 
-  /*
-  static Set<DateTime> fetchDays() {
-    List<Talk> list = fetchAll();
-    list.sort((a, b) {
-      return DateTime(a.day.year, a.day.month, a.day.day, a.time.hour, a.time.minute)
-          .compareTo(DateTime(b.day.year, b.day.month, b.day.day, b.time.hour, b.time.minute));
+  static List<Talk> getTalksOnDay(List<Talk> talks, DateTime date) {
+    List<Talk> returnTalks = [];
+    talks.forEach((element) {
+      if ((element.day.day == date.day) && (element.day.month == date.month) && (element.day.year == date.year))
+        returnTalks.add(element);
     });
-    Set<DateTime> days = new Set();
-    for (var i = 0; i < list.length; ++i) {
-      days.add(list[i].day);
-    }
-    return days;
+    return returnTalks;
   }
-   */
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Talk && runtimeType == other.runtimeType && id == other.id;
-
-  @override
-  int get hashCode => id.hashCode;
-
-  /*
-  static Talk getNextTalk() {
+  static Talk getNextTalk(List<Talk> talks, List<DateTime> days) {
     var day = DateTime.now();
-    var days = Talk.fetchDays();
 
-    var talksDay = Talk.fetchByDay(DateTime(day.year, day.month, day.day));
-    talksDay.sort((a, b) {
-      return DateTime(2020, 1, 1, a.time.hour, a.time.minute).compareTo(DateTime(2020, 1, 1, b.time.hour, b.time.minute));
-    });
+    var talksDay = getTalksOnDay(talks, DateTime(day.year, day.month, day.day));
+
     if (talksDay.isNotEmpty) {
       for (var talk in talksDay) {
         if (day.isBefore(DateTime(talk.day.year, talk.day.month, talk.day.day, talk.time.hour, talk.time.minute))) {
@@ -100,10 +62,17 @@ class Talk {
 
     for ( var i = 0; i < days.length; i++ ) {
       if (days.elementAt(i).isAfter(day)) {
-        return Talk.fetchByDay(days.elementAt(i))[0];
+        return getTalksOnDay(talks, days.elementAt(i))[0];
       }
     }
     return null;
   }
-   */
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Talk && runtimeType == other.runtimeType && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
