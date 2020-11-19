@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
               ),
               ListTile(
                 title: Text(
-                  'v0.1-alpha',
+                  'v0.2-alpha',
                   style: ListItemDrawerStyle.copyWith(
                     color: Colors.grey
                   ),
