@@ -49,14 +49,62 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 **Check Agenda**
 * **Actor**. Atendee
 * **Description**. The Atendee can check the conference's agenda 
-* **Preconditions and Postconditions**.The Atendee needs to go to the agenda page from a Menu
+* **Preconditions and Postconditions**. The Atendee needs to go to the agenda page from a Menu
 
 * **Normal Flow**. 
   * The Atendee goes to the Agenda page
   * The System fetches the most recent data
   * The System display the data
 
-* **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions. 
+* **Alternative flows and exceptions**
+  * The atendee might want to see the agenda without internet connection, if a talk was changed, the data displayed on the app wont be updated. It will be updated as soon as the atendee turns on the internet
+
+**Check Notifications**
+* **Actor**. Atendee
+
+* **Description**. The atendee can receive notifications and be updated without opening the app
+
+* **Preconditions and Postconditions**. The atendee only needs to turn on the phone screen to see the notification
+
+* **Normal Flow**.
+  * The system sends a notification describing the change
+  * The atendee turns on the phone screen and sees the updates
+
+* **Alternative flows and exceptions**
+  * The atendee can tap on the notification to automatically enter the app and see more detailed information. The notification wont be received if the user doesnt have internet connection but will be as soon as he turns it on
+
+**Reschedule Talk**
+
+* **Actor**. Conference host
+
+* **Description**. The conference host can send a notification to the atendees when reshedules a talk
+
+* **Preconditions and Postconditions**. The conference host needs to sign in as a staff member and go to the edit talks tab, reschedule the talk, and submit the changes
+
+* **Normal Flow**.
+  * The conference host signs in on the app
+  * Goes to the menu choosing the edit talks tab
+  * Reschedules the desired talk
+  * The system will send a notification to all of the atendees
+
+* **Alternative flows and exceptions**
+  * The conference host can change the information without internet connection and the system will ensure that every atendee receives the notification as soon as the conference host turns on the internet
+
+**Change Room**
+* **Actor**. Conference host
+
+* **Description**. The conference host can send a notification to the atendees when the room of a talk is changed
+
+* **Preconditions and Postconditions**. The conference host needs to sign in as a staff member and go to the edit talks tab, make the room change and submit the changes
+
+* **Normal Flow**.
+  * The conference host signs in on the app
+  * Goes to the menu choosing the edit talks tab
+  * Changes the room of the desired talk
+  * The system will send a notification to all of the atendees
+
+* **Alternative flows and exceptions**
+  * The conference host can change the information without internet connection and the system will ensure that every atendee receives the notification as soon as the conference host turns on the internet
 
 ### [User stories](userstories.md)
 **List**:
