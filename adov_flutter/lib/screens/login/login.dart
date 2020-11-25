@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:adov_flutter/app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,21 +20,30 @@ class LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool _success;
-  String _userEmail;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  FocusNode _focus1 = new FocusNode();
+  FocusNode _focus2 = new FocusNode();
+  bool _showTitle = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _focus1.addListener(_onFocusChange);
+    _focus2.addListener(_onFocusChange);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: (!_showTitle),
       key: _scaffoldKey,
       backgroundColor: MainColor,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
+          (_showTitle) ? Container(
             child: Text(
               "Ad\nOv",
               style: TitleTextStyle.copyWith(
@@ -40,21 +51,20 @@ class LoginScreenState extends State<LoginScreen> {
                 fontSize: 100,
               ),
             ),
-          ),
+          ) :
+          Text(""),
           Form(
             key: _formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: TextFormField(
                     controller: _emailController,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 24
-                    ),
-                    decoration: CustomInputDecorator.decorator("Email").copyWith(
+                    focusNode: _focus1,
+                    style: TextStyle(color: Colors.grey, fontSize: 24),
+                    decoration:
+                    CustomInputDecorator.decorator("Email").copyWith(
                       fillColor: Colors.grey,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -63,9 +73,7 @@ class LoginScreenState extends State<LoginScreen> {
                           width: 1.5,
                         ),
                       ),
-                      labelStyle: TextStyle(
-                          color: Colors.grey
-                      ),
+                      labelStyle: TextStyle(color: Colors.grey),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         borderSide: BorderSide(
@@ -90,10 +98,11 @@ class LoginScreenState extends State<LoginScreen> {
                       color: Colors.grey,
                       fontSize: 24,
                     ),
-                    enableSuggestions: false,
+                    focusNode: _focus2,
                     autocorrect: false,
                     obscureText: true,
-                    decoration: CustomInputDecorator.decorator("Password").copyWith(
+                    decoration:
+                    CustomInputDecorator.decorator("Password").copyWith(
                       fillColor: Colors.grey,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -102,9 +111,7 @@ class LoginScreenState extends State<LoginScreen> {
                           width: 1.5,
                         ),
                       ),
-                      labelStyle: TextStyle(
-                          color: Colors.grey
-                      ),
+                      labelStyle: TextStyle(color: Colors.grey),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         borderSide: BorderSide(
@@ -122,17 +129,37 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
                   alignment: Alignment.center,
                   child: OutlineButton(
                     onPressed: () async {
-                      FocusScope.of(context).unfocus();
                       if (_formKey.currentState.validate()) {
+                        FocusScope.of(context).unfocus();
                         _signInWithEmailAndPassword();
                       }
                     },
                     child: Text(
                       "Login",
+                      style: TitleTextStyle.copyWith(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 7, horizontal: 50),
+                    borderSide: BorderSide(
+                      color: Colors.grey,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(26.0),
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: OutlineButton(
+                    onPressed: () => Navigator.pushReplacementNamed(
+                        context, HomeScreenRoute),
+                    child: Text(
+                      "Guest",
                       style: TitleTextStyle.copyWith(
                         color: Colors.white,
                         fontSize: 24,
@@ -156,35 +183,50 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void _signInWithEmailAndPassword() async {
-    final User user = (await _auth.signInWithEmailAndPassword(
-      email: _emailController.text,
-      password: _passwordController.text,
-    )).user;
+    User user;
+    SnackBar snackBar;
+
+    try {
+      user = (await _auth.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      )).user;
+    } on FirebaseAuthException catch  (e) {
+      switch (e.code) {
+        case 'invalid-email':
+          snackBar = SnackBar(content: Text("Invalid Email Format"));
+          _scaffoldKey.currentState.showSnackBar(snackBar);
+          break;
+        case 'user-not-found':
+          snackBar = SnackBar(content: Text("User Not Found"));
+          _scaffoldKey.currentState.showSnackBar(snackBar);
+          break;
+        case 'wrong-password':
+          snackBar = SnackBar(content: Text("Wrong Password"));
+          _scaffoldKey.currentState.showSnackBar(snackBar);
+          break;
+        default:
+          break;
+      }
+      print('Failed with error code: ${e.code}');
+      print(e.message);
+    }
+
 
     if (user != null) {
-      setState(() {
-        _success = true;
-        _userEmail = user.email;
-      });
-
-      print("email: " + _emailController.text);
-      print("password: " + _passwordController.text);
-
-      final snackBar = SnackBar(content: Text("Successfully Logged In..."));
+      snackBar = SnackBar(content: Text("Successfully Logged In..."));
       _scaffoldKey.currentState.showSnackBar(snackBar);
 
       Future.delayed(Duration(seconds: 1), () {
         Navigator.pushReplacementNamed(context, HomeScreenRoute);
       });
-    } else {
-      setState(() {
-        _success = false;
-      });
-      final snackBar = SnackBar(content: Text("Wrong credentials..."));
-      print("email: " + _emailController.text);
-      print("password: " + _passwordController.text);
-      _scaffoldKey.currentState.showSnackBar(snackBar);
     }
+  }
+
+  void _onFocusChange() {
+    setState(() {
+      _showTitle = !_focus1.hasFocus && !_focus2.hasFocus;
+    });
   }
 
   @override
@@ -194,4 +236,3 @@ class LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 }
-
