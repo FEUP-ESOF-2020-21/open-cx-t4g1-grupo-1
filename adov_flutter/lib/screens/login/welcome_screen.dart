@@ -27,10 +27,10 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             Padding(padding: EdgeInsets.only(top: 125)),
-            AnimatedText("tap to continue..."),
+            AnimatedText("tap to continue"),
             Padding(padding: EdgeInsets.only(top: 50)),
             OutlineButton(
-              onPressed: () => print("hello there"),
+              onPressed: () => Navigator.pushReplacementNamed(context, LoginScreenRoute),
               child: Text(
                 "Staff",
                 style: TitleTextStyle.copyWith(

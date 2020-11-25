@@ -2,6 +2,7 @@ import 'package:adov_flutter/app.dart';
 import 'package:adov_flutter/screens/home_screen/conference_sponsors.dart';
 import 'package:adov_flutter/screens/home_screen/conference_stats.dart';
 import 'package:adov_flutter/screens/home_screen/next_talk.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,9 +10,30 @@ import '../../app.dart';
 import '../../style.dart';
 import 'conference_details.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+
+  @override
+  State createState() => HomeScreenState();
+}
+
+class HomeScreenState extends State<HomeScreen> {
+  bool isLoggedIn;
+
+
+  @override
+  void initState() {
+    isLoggedIn = false;
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      setState(() {
+        isLoggedIn = user != null;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
@@ -40,14 +62,6 @@ class HomeScreen extends StatelessWidget {
                 leading: Icon(Icons.calendar_today),
                 title: Text('Talks Schedule', style: ListItemDrawerStyle,),
               ),
-              ListTile(
-                leading: Icon(Icons.edit),
-                title: Text('Edit Talks', style: ListItemDrawerStyle,),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, EditTalksRoute);
-                },
-              ),
               /*
               ListTile(
                 leading: Icon(Icons.developer_board),
@@ -60,11 +74,7 @@ class HomeScreen extends StatelessWidget {
                 onTap: () => TalksDatabase.removeTalksFromDatabase(),
               ),
                */
-              ListTile(
-                leading: Icon(Icons.logout),
-                title: Text('Logout', style: ListItemDrawerStyle,),
-                onTap: () => Navigator.pop(context),
-              ),
+              for (var widget in _getDrawerItems()) widget,
               ListTile(
                 title: Text(
                   'v0.2-alpha',
@@ -101,5 +111,35 @@ class HomeScreen extends StatelessWidget {
         ),
       )
     );
+  }
+
+  List<Widget> _getDrawerItems() {
+    if (isLoggedIn) {
+      return [
+        ListTile(
+          leading: Icon(Icons.edit),
+          title: Text('Edit Talks', style: ListItemDrawerStyle,),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, EditTalksRoute);
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.logout),
+          title: Text('Logout', style: ListItemDrawerStyle,),
+          onTap: () {
+            FirebaseAuth.instance.signOut();
+            Navigator.pop(context);
+          }
+        )
+      ];
+    }
+    else {
+      return [ListTile(
+        leading: Icon(Icons.login),
+        title: Text('Login', style: ListItemDrawerStyle,),
+        onTap: () => Navigator.pushNamed(context, LoginScreenRoute),
+      )];
+    }
   }
 }

@@ -4,6 +4,7 @@ import 'package:adov_flutter/screens/add_talk/add_talk.dart';
 import 'package:adov_flutter/screens/edit_talk/edit_talk.dart';
 import 'package:adov_flutter/screens/edit_talks/edit_talks.dart';
 import 'package:adov_flutter/screens/home_screen/home_screen.dart';
+import 'package:adov_flutter/screens/login/login.dart';
 import 'package:adov_flutter/screens/login/welcome_screen.dart';
 import 'package:adov_flutter/screens/talk_detail/talk_detail.dart';
 import 'package:adov_flutter/screens/talks_schedule/talks_schedule.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'style.dart';
 
 const WelcomeScreenRoute = '/';
+const LoginScreenRoute = '/login';
 const HomeScreenRoute = '/home_screen';
 const TalksScheduleRoute = '/talks_schedule';
 const TalkDetailRoute = '/talk_detail';
@@ -37,6 +39,9 @@ RouteFactory _routes() {
     switch (settings.name) {
       case WelcomeScreenRoute:
         screen = WelcomeScreen();
+        break;
+      case LoginScreenRoute:
+        screen = LoginScreen();
         break;
       case HomeScreenRoute:
         screen = HomeScreen();
