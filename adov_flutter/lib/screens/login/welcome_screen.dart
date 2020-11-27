@@ -1,6 +1,7 @@
 import 'package:adov_flutter/app.dart';
 import 'package:adov_flutter/screens/login/animated_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,11 @@ class WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   void initState() {
+    FirebaseMessaging.instance.subscribeToTopic('Talks');
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      Navigator.pushReplacementNamed(context, HomeScreenRoute);
+      Navigator.pushNamed(context, TalksScheduleRoute);
+    });
     isLoggedIn = false;
     FirebaseAuth.instance.authStateChanges().listen((user) {
       setState(() {
