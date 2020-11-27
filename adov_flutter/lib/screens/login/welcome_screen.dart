@@ -22,6 +22,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       Navigator.pushReplacementNamed(context, HomeScreenRoute);
       Navigator.pushNamed(context, TalksScheduleRoute);
+      print(message.data.toString());
     });
     isLoggedIn = false;
     FirebaseAuth.instance.authStateChanges().listen((user) {

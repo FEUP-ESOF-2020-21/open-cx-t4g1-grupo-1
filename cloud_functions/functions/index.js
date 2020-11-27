@@ -24,8 +24,8 @@ exports.editTalk = functions.firestore
         const talk = change.after.data();
         const payload = {
             notification: {
-                title: 'Talks Edited',
-                body: `${talk.title} was edited`
+                title: 'Talk Edited',
+                body: `${talk.title} information was edited.`
             }
         }
 
@@ -46,7 +46,7 @@ exports.newTalk = functions.firestore
         const payload = {
             notification: {
                 title: 'New Talk',
-                body: `${talk.title} was added to the schedule`
+                body: `${talk.title} was added to the schedule.`
             }
         }
 
@@ -67,7 +67,7 @@ exports.deleteTalk = functions.firestore
         const payload = {
             notification: {
                 title: 'Deleted Talk',
-                body: `${talk.title} was deleted from the schedule`
+                body: `${talk.title} was deleted from the schedule.`
             }
         }
 
