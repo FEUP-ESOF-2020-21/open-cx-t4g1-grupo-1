@@ -28,6 +28,7 @@ dependencies:
   flutter_datetime_picker: ^1.4.0
   cloud_firestore: "^0.14.3"
   firebase_auth: "^0.18.3"
+  firebase_messaging: "^8.0.0-dev.9"
 
 
   # The following adds the Cupertino Icons font to your application.
