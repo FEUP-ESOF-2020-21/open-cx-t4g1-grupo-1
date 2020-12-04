@@ -77,7 +77,7 @@ class HomeScreenState extends State<HomeScreen> {
               for (var widget in _getDrawerItems()) widget,
               ListTile(
                 title: Text(
-                  'v0.2-alpha',
+                  'v0.3-alpha',
                   style: ListItemDrawerStyle.copyWith(
                     color: Colors.grey
                   ),
