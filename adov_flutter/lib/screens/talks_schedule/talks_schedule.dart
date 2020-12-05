@@ -27,8 +27,10 @@ class TalksSchedule extends StatelessWidget {
               talks.add(TalksDatabase.createTalkFromSnapshot(element));
             });
             talks.sort((a, b) {
-              return DateTime(a.day.year, a.day.month, a.day.day, a.time.hour, a.time.minute)
-                  .compareTo(DateTime(b.day.year, b.day.month, b.day.day, b.time.hour, b.time.minute));
+              return DateTime(a.day.year, a.day.month, a.day.day, a.time.hour,
+                      a.time.minute)
+                  .compareTo(DateTime(b.day.year, b.day.month, b.day.day,
+                      b.time.hour, b.time.minute));
             });
             List<DateTime> days = Talk.getDays(talks);
             Talk nextTalk = Talk.getNextTalk(talks, days);
@@ -40,7 +42,9 @@ class TalksSchedule extends StatelessWidget {
               shrinkWrap: true,
               padding: EdgeInsets.symmetric(vertical: 20.0),
               children: <Widget>[
-                for ( var i in days ) _dayWidget(context, day++, Talk.getTalksOnDay(talks, i), nextTalk),
+                for (var i in days)
+                  _dayWidget(
+                      context, day++, Talk.getTalksOnDay(talks, i), nextTalk),
               ],
             );
           }),
@@ -49,47 +53,49 @@ class TalksSchedule extends StatelessWidget {
 
   Widget _itemBuilder(BuildContext context, Talk talk, Talk nextTalk) {
     return GestureDetector(
-      key: Key('location_list_item_${talk.id}'),
-      onTap: () => _onLocationTap(context, talk.id),
+      key: Key('talk_list_item_${talk.id}'),
+      onTap: () => _onTalkTap(context, talk.id),
       child: Align(
           alignment: Alignment.centerRight,
           child: Container(
             margin: const EdgeInsets.only(right: 20.0, bottom: 20.0),
             decoration: ComponentBoxStyle.create(
-              radius: 8,
-              color: (talk == nextTalk) ? Colors.red : MainColor
-            ),
+                radius: 8, color: (talk == nextTalk) ? Colors.red : MainColor),
             width: 300,
-            child: TalkContainer(talk: talk, darkTheme: true, nextTalk: (talk == nextTalk),),
-          )
-      ),
+            child: TalkContainer(
+              talk: talk,
+              darkTheme: true,
+              nextTalk: (talk == nextTalk),
+            ),
+          )),
     );
   }
 
-  Widget _dayWidget(BuildContext context, int day, List<Talk> talks, Talk nextTalk) {
-    return
-      Row(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 5),
-            child: TalkDay(talks[0], day, false),
+  Widget _dayWidget(
+      BuildContext context, int day, List<Talk> talks, Talk nextTalk) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 5),
+          child: TalkDay(talks[0], day, false),
+        ),
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) =>
+                _itemBuilder(context, talks[index], nextTalk),
+            itemCount: talks.length,
           ),
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => _itemBuilder(context, talks[index], nextTalk),
-              itemCount: talks.length,
-            ),
-          )
-        ],
-      );
+        )
+      ],
+    );
   }
 
-  _onLocationTap(BuildContext context, var locationID) {
+  _onTalkTap(BuildContext context, var locationID) {
     Navigator.pushNamed(context, TalkDetailRoute,
         arguments: {"id": locationID});
   }

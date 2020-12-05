@@ -64,8 +64,8 @@ class EditTalks extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
-                key: Key('location_list_item_${talk.id}'),
-                onTap: () => _onLocationTap(context, talk.id),
+                key: Key('talk_list_item_${talk.id}'),
+                onTap: () => _onTalkTap(context, talk.id),
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 20.0),
                   decoration: ComponentBoxStyle.create(
@@ -76,15 +76,15 @@ class EditTalks extends StatelessWidget {
                       talk: talk,
                       darkTheme: true,
                       nextTalk: (talk == nextTalk)),
-                )
-            ),
+                )),
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(MainColor),
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                 minimumSize: MaterialStateProperty.all<Size>(Size(70, 70)),
               ),
-              onPressed: () => Navigator.pushNamed(context, EditTalkRoute, arguments: {"id": talk}),
+              onPressed: () => Navigator.pushNamed(context, EditTalkRoute,
+                  arguments: {"id": talk}),
               child: Icon(Icons.edit),
             ),
             ElevatedButton(
@@ -97,11 +97,10 @@ class EditTalks extends StatelessWidget {
               child: Icon(Icons.delete),
             ),
           ],
-        )
-    );
+        ));
   }
 
-  _onLocationTap(BuildContext context, var locationID) {
+  _onTalkTap(BuildContext context, var locationID) {
     Navigator.pushNamed(context, TalkDetailRoute,
         arguments: {"id": locationID});
   }

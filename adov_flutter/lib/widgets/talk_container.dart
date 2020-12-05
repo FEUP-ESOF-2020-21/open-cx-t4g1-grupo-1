@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../style.dart';
 
-const LocationTileHeight = 100.0;
+const TalkTileHeight = 100.0;
 
 class TalkContainer extends StatelessWidget {
   final Talk talk;
@@ -28,11 +28,11 @@ class TalkContainer extends StatelessWidget {
             Text(
               talk.room.toUpperCase(),
               style: Theme.of(context).textTheme.subtitle.copyWith(
-                color: (nextTalk) ? TextColorLight : TextColorAccent
-              ),
+                  color: (nextTalk) ? TextColorLight : TextColorAccent),
             ),
             Text(
-              DateFormat('dd/MM/yyyy ').format(talk.day) + talk.time.format(context),
+              DateFormat('dd/MM/yyyy ').format(talk.day) +
+                  talk.time.format(context),
               style: Theme.of(context)
                   .textTheme
                   .caption
@@ -44,7 +44,7 @@ class TalkContainer extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style:
-              Theme.of(context).textTheme.title.copyWith(color: textColor),
+                  Theme.of(context).textTheme.title.copyWith(color: textColor),
             ),
           ]),
     );

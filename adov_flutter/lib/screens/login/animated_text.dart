@@ -1,4 +1,3 @@
-import 'package:adov_flutter/screens/edit_talk/edit_talk.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

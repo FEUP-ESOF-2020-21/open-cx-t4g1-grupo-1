@@ -29,8 +29,10 @@ class NextTalk extends StatelessWidget {
             talks.add(TalksDatabase.createTalkFromSnapshot(element));
           });
           talks.sort((a, b) {
-            return DateTime(a.day.year, a.day.month, a.day.day, a.time.hour, a.time.minute)
-                .compareTo(DateTime(b.day.year, b.day.month, b.day.day, b.time.hour, b.time.minute));
+            return DateTime(a.day.year, a.day.month, a.day.day, a.time.hour,
+                    a.time.minute)
+                .compareTo(DateTime(b.day.year, b.day.month, b.day.day,
+                    b.time.hour, b.time.minute));
           });
           List<DateTime> days = Talk.getDays(talks);
           Talk nextTalk = Talk.getNextTalk(talks, days);
@@ -48,7 +50,8 @@ class NextTalk extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                       child: Text(
                         "Next Talk",
                         style: CardsTitleStyle.copyWith(
@@ -58,17 +61,17 @@ class NextTalk extends StatelessWidget {
                     ),
                     GestureDetector(
                         onTap: () => _onTalkTap(context, nextTalk.id),
-                        child: NextTalkContainer(nextTalk, darkTheme: darkTheme,)
-                    )
-                  ]
-              ),
+                        child: NextTalkContainer(
+                          nextTalk,
+                          darkTheme: darkTheme,
+                        ))
+                  ]),
             ),
           );
         });
   }
 
   _onTalkTap(BuildContext context, DocumentReference talkID) {
-    print("_onTalkTap: " + talkID.toString());
     Navigator.pushNamed(context, TalkDetailRoute, arguments: {"id": talkID});
   }
 }

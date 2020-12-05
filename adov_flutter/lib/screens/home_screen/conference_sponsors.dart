@@ -33,7 +33,9 @@ class ConferenceSponsors extends StatelessWidget {
                 ),
               ),
               StreamBuilder(
-                stream: FirebaseFirestore.instance.doc("conference/details").snapshots(),
+                stream: FirebaseFirestore.instance
+                    .doc("conference/details")
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Text("Loading...");
@@ -42,19 +44,17 @@ class ConferenceSponsors extends StatelessWidget {
                   return Container(
                     margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                    decoration: ComponentBoxStyle.create(radius: 7.5, color: InnerComponentColor),
+                    decoration: ComponentBoxStyle.create(
+                        radius: 7.5, color: InnerComponentColor),
                     child: Text(
                       sponsors,
-                      style: Body1TextStyle.copyWith(
-                          color: textColor
-                      ),
+                      style: Body1TextStyle.copyWith(color: textColor),
                       textAlign: TextAlign.center,
                     ),
                   );
                 },
               )
-            ]
-        ),
+            ]),
       ),
     );
   }

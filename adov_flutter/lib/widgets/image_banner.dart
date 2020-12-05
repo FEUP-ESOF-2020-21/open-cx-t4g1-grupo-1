@@ -1,5 +1,3 @@
-// screens/location_detail/image_banner.dart
-
 import 'package:flutter/material.dart';
 
 class ImageBanner extends StatelessWidget {
