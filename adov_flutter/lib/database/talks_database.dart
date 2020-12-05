@@ -10,8 +10,6 @@ class TalksDatabase {
   static DocumentReference conferenceRef =
       FirebaseFirestore.instance.doc('conference/details');
 
-  static var TAG = "TalksDatabase: ";
-
   static Future<Map> getConferenceStats() async {
     Set<DateTime> days = Set();
     int talks = 0;
@@ -54,34 +52,62 @@ class TalksDatabase {
   }
 
   static Talk createTalkFromSnapshot(DocumentSnapshot data) {
-    var talk = Talk(data["title"], data["room"], TimeOfDay(hour: data["hour"], minute: data["min"]), DateTime(data["year"], data["month"], data["day"]), data["details"], data["imagePath"]);
+    var talk = Talk(
+        data["title"],
+        data["room"],
+        TimeOfDay(hour: data["hour"], minute: data["min"]),
+        DateTime(data["year"], data["month"], data["day"]),
+        data["details"],
+        data["imagePath"]);
     talk.setId(data.reference);
     return talk;
   }
 
   static addTalksToDatabase() async {
     var talks = [
-      Talk("Talk 1", "B202", TimeOfDay(hour: 15, minute: 15), DateTime(2020, 12, 15),
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in libero nulla. Pellentesque pharetra ornare ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque et tortor urna. Aenean ultrices varius tortor, nec imperdiet elit venenatis at. Donec iaculis dolor vitae egestas efficitur. Pellentesque fermentum tortor in mauris eleifend, sed tempor ex faucibus. Curabitur varius porttitor dignissim. Duis risus lorem, luctus et tellus et, lobortis laoreet ligula. Donec sollicitudin nec magna non imperdiet."
-          , 'assets/images/bg1.jpg'),
-      Talk("Talk 2", "B203", TimeOfDay(hour: 15, minute: 20), DateTime(2020, 12, 15), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 3", "B204", TimeOfDay(hour: 16, minute: 15), DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 4", "B205", TimeOfDay(hour: 13, minute: 15), DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 5", "B206", TimeOfDay(hour: 10, minute: 15), DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 6", "B207", TimeOfDay(hour: 20, minute: 15), DateTime(2020, 12, 17), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 7", "B208", TimeOfDay(hour: 19, minute: 15), DateTime(2020, 12, 17), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 8", "B209", TimeOfDay(hour: 12, minute: 15), DateTime(2020, 12, 18), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 9", "B209", TimeOfDay(hour: 12, minute: 15), DateTime(2020, 12, 18), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 10", "B209", TimeOfDay(hour: 12, minute: 15), DateTime(2020, 12, 18), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 11", "B209", TimeOfDay(hour: 15, minute: 15), DateTime(2020, 12, 18), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 12", "B209", TimeOfDay(hour: 13, minute: 15), DateTime(2020, 12, 19), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 13", "B209", TimeOfDay(hour: 12, minute: 15), DateTime(2020, 12, 19), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 14", "B209", TimeOfDay(hour: 17, minute: 15), DateTime(2020, 12, 19), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 15", "B209", TimeOfDay(hour: 18, minute: 30), DateTime(2020, 12, 19), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 16", "B209", TimeOfDay(hour: 9, minute: 15), DateTime(2020, 12, 20), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 17", "B209", TimeOfDay(hour: 17, minute: 15), DateTime(2020, 12, 20), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 18", "B209", TimeOfDay(hour: 13, minute: 15), DateTime(2020, 12, 20), "Lorem Ipsum", 'assets/images/bg1.jpg'),
-      Talk("Talk 19", "B209", TimeOfDay(hour: 18, minute: 15), DateTime(2020, 12, 20), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk(
+          "Talk 1",
+          "B202",
+          TimeOfDay(hour: 15, minute: 15),
+          DateTime(2020, 12, 15),
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in libero nulla. Pellentesque pharetra ornare ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque et tortor urna. Aenean ultrices varius tortor, nec imperdiet elit venenatis at. Donec iaculis dolor vitae egestas efficitur. Pellentesque fermentum tortor in mauris eleifend, sed tempor ex faucibus. Curabitur varius porttitor dignissim. Duis risus lorem, luctus et tellus et, lobortis laoreet ligula. Donec sollicitudin nec magna non imperdiet.",
+          'assets/images/bg1.jpg'),
+      Talk("Talk 2", "B203", TimeOfDay(hour: 15, minute: 20),
+          DateTime(2020, 12, 15), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 3", "B204", TimeOfDay(hour: 16, minute: 15),
+          DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 4", "B205", TimeOfDay(hour: 13, minute: 15),
+          DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 5", "B206", TimeOfDay(hour: 10, minute: 15),
+          DateTime(2020, 12, 16), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 6", "B207", TimeOfDay(hour: 20, minute: 15),
+          DateTime(2020, 12, 17), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 7", "B208", TimeOfDay(hour: 19, minute: 15),
+          DateTime(2020, 12, 17), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 8", "B209", TimeOfDay(hour: 12, minute: 15),
+          DateTime(2020, 12, 18), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 9", "B209", TimeOfDay(hour: 12, minute: 15),
+          DateTime(2020, 12, 18), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 10", "B209", TimeOfDay(hour: 12, minute: 15),
+          DateTime(2020, 12, 18), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 11", "B209", TimeOfDay(hour: 15, minute: 15),
+          DateTime(2020, 12, 18), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 12", "B209", TimeOfDay(hour: 13, minute: 15),
+          DateTime(2020, 12, 19), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 13", "B209", TimeOfDay(hour: 12, minute: 15),
+          DateTime(2020, 12, 19), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 14", "B209", TimeOfDay(hour: 17, minute: 15),
+          DateTime(2020, 12, 19), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 15", "B209", TimeOfDay(hour: 18, minute: 30),
+          DateTime(2020, 12, 19), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 16", "B209", TimeOfDay(hour: 9, minute: 15),
+          DateTime(2020, 12, 20), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 17", "B209", TimeOfDay(hour: 17, minute: 15),
+          DateTime(2020, 12, 20), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 18", "B209", TimeOfDay(hour: 13, minute: 15),
+          DateTime(2020, 12, 20), "Lorem Ipsum", 'assets/images/bg1.jpg'),
+      Talk("Talk 19", "B209", TimeOfDay(hour: 18, minute: 15),
+          DateTime(2020, 12, 20), "Lorem Ipsum", 'assets/images/bg1.jpg'),
     ];
 
     talks.forEach((element) {
@@ -110,12 +136,11 @@ class TalksDatabase {
     await collectionReference.get().then((querySnapshot) {
       Set<DateTime> days = Set();
       querySnapshot.docs.forEach((element) {
-        days.add(
-            DateTime(
-              element.data()["year"],
-              element.data()["month"],
-              element.data()["day"],)
-        );
+        days.add(DateTime(
+          element.data()["year"],
+          element.data()["month"],
+          element.data()["day"],
+        ));
       });
       conferenceRef.update({"days": days.length});
     });
