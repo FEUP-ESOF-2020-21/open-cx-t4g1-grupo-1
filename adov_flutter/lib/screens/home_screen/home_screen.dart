@@ -11,14 +11,12 @@ import '../../style.dart';
 import 'conference_details.dart';
 
 class HomeScreen extends StatefulWidget {
-
   @override
   State createState() => HomeScreenState();
 }
 
 class HomeScreenState extends State<HomeScreen> {
   bool isLoggedIn;
-
 
   @override
   void initState() {
@@ -33,13 +31,12 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-        backgroundColor: MainColor,
-      ),
-      drawer: Drawer(
+        appBar: AppBar(
+          title: Text("Home"),
+          backgroundColor: MainColor,
+        ),
+        drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -47,12 +44,8 @@ class HomeScreenState extends State<HomeScreen> {
                 decoration: BoxDecoration(
                   color: MainColor,
                 ),
-                child: Text(
-                  'AdOv',
-                  style: TitleTextStyle.copyWith(
-                    color: Colors.white
-                  )
-                ),
+                child: Text('AdOv',
+                    style: TitleTextStyle.copyWith(color: Colors.white)),
               ),
               ListTile(
                 onTap: () {
@@ -60,7 +53,10 @@ class HomeScreenState extends State<HomeScreen> {
                   Navigator.pushNamed(context, TalksScheduleRoute);
                 },
                 leading: Icon(Icons.calendar_today),
-                title: Text('Talks Schedule', style: ListItemDrawerStyle,),
+                title: Text(
+                  'Talks Schedule',
+                  style: ListItemDrawerStyle,
+                ),
               ),
               /*
               ListTile(
@@ -78,39 +74,36 @@ class HomeScreenState extends State<HomeScreen> {
               ListTile(
                 title: Text(
                   'v0.3-alpha',
-                  style: ListItemDrawerStyle.copyWith(
-                    color: Colors.grey
-                  ),
+                  style: ListItemDrawerStyle.copyWith(color: Colors.grey),
                 ),
               ),
             ],
           ),
         ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ConferenceDetails(
-              darkTheme: true,
-              padding: EdgeInsets.symmetric(vertical: 20),
-            ),
-            NextTalk(
-              darkTheme: true,
-              padding: EdgeInsets.only(bottom: 20),
-            ),
-            ConferenceStats(
-              darkTheme: true,
-              padding: EdgeInsets.only(bottom: 20),
-            ),
-            ConferenceSponsors(
-              darkTheme: true,
-              padding: EdgeInsets.only(bottom: 20),
-            ),
-          ],
-        ),
-      )
-    );
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ConferenceDetails(
+                darkTheme: true,
+                padding: EdgeInsets.symmetric(vertical: 20),
+              ),
+              NextTalk(
+                darkTheme: true,
+                padding: EdgeInsets.only(bottom: 20),
+              ),
+              ConferenceStats(
+                darkTheme: true,
+                padding: EdgeInsets.only(bottom: 20),
+              ),
+              ConferenceSponsors(
+                darkTheme: true,
+                padding: EdgeInsets.only(bottom: 20),
+              ),
+            ],
+          ),
+        ));
   }
 
   List<Widget> _getDrawerItems() {
@@ -118,28 +111,37 @@ class HomeScreenState extends State<HomeScreen> {
       return [
         ListTile(
           leading: Icon(Icons.edit),
-          title: Text('Edit Talks', style: ListItemDrawerStyle,),
+          title: Text(
+            'Edit Talks',
+            style: ListItemDrawerStyle,
+          ),
           onTap: () {
             Navigator.pop(context);
             Navigator.pushNamed(context, EditTalksRoute);
           },
         ),
         ListTile(
-          leading: Icon(Icons.logout),
-          title: Text('Logout', style: ListItemDrawerStyle,),
-          onTap: () {
-            FirebaseAuth.instance.signOut();
-            Navigator.pop(context);
-          }
+            leading: Icon(Icons.logout),
+            title: Text(
+              'Logout',
+              style: ListItemDrawerStyle,
+            ),
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.pop(context);
+            })
+      ];
+    } else {
+      return [
+        ListTile(
+          leading: Icon(Icons.login),
+          title: Text(
+            'Login',
+            style: ListItemDrawerStyle,
+          ),
+          onTap: () => Navigator.pushNamed(context, LoginScreenRoute),
         )
       ];
-    }
-    else {
-      return [ListTile(
-        leading: Icon(Icons.login),
-        title: Text('Login', style: ListItemDrawerStyle,),
-        onTap: () => Navigator.pushNamed(context, LoginScreenRoute),
-      )];
     }
   }
 }

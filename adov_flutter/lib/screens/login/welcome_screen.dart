@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import '../../style.dart';
 
 class WelcomeScreen extends StatefulWidget {
-
   @override
   State createState() => WelcomeScreenState();
 }
@@ -22,7 +21,6 @@ class WelcomeScreenState extends State<WelcomeScreen> {
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       Navigator.pushReplacementNamed(context, HomeScreenRoute);
       Navigator.pushNamed(context, TalksScheduleRoute);
-      print(message.data.toString());
     });
     isLoggedIn = false;
     FirebaseAuth.instance.authStateChanges().listen((user) {
@@ -36,68 +34,66 @@ class WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MainColor,
-      body: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () => Navigator.pushReplacementNamed(context, HomeScreenRoute),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Text(
-                "Ad\nOv",
-                style: TitleTextStyle.copyWith(
-                  color: Colors.white,
-                  fontSize: 100,
+        backgroundColor: MainColor,
+        body: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => Navigator.pushReplacementNamed(context, HomeScreenRoute),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  "Ad\nOv",
+                  style: TitleTextStyle.copyWith(
+                    color: Colors.white,
+                    fontSize: 100,
+                  ),
                 ),
               ),
-            ),
-            Padding(padding: EdgeInsets.only(top: 125)),
-            AnimatedText("tap to continue"),
-            Padding(padding: EdgeInsets.only(top: 50)),
-            (!isLoggedIn)
-                ?
-            OutlineButton(
-              onPressed: () => Navigator.pushReplacementNamed(context, LoginScreenRoute),
-              child: Text(
-                "Staff",
-                style: TitleTextStyle.copyWith(
+              Padding(padding: EdgeInsets.only(top: 125)),
+              AnimatedText("tap to continue"),
+              Padding(padding: EdgeInsets.only(top: 50)),
+              (!isLoggedIn)
+                  ? OutlineButton(
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, LoginScreenRoute),
+                      child: Text(
+                        "Staff",
+                        style: TitleTextStyle.copyWith(
+                          color: Colors.white,
+                          fontSize: 40,
+                        ),
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+                      borderSide: BorderSide(
+                        color: Colors.grey,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(26.0),
+                      ),
+                    )
+                  : Container(
+                      child: Text(
+                        "Logged as Staff",
+                        style: TitleTextStyle.copyWith(
+                          color: Colors.white,
+                          fontSize: 36,
+                        ),
+                      ),
+                    ),
+              Padding(padding: EdgeInsets.only(top: 50)),
+              Text(
+                "Adapt, Overcome",
+                style: Body1TextStyle.copyWith(
                   color: Colors.white,
-                  fontSize: 40,
+                  fontSize: 20,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
-              borderSide: BorderSide(
-                color: Colors.grey,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(26.0),
-              ),
-            )
-              :
-            Container(
-              child: Text(
-                "Logged as Staff",
-                style: TitleTextStyle.copyWith(
-                  color: Colors.white,
-                  fontSize: 36,
-                ),
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(top: 50)),
-            Text(
-              "Adapt, Overcome",
-              style: Body1TextStyle.copyWith(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(top: 30))
-          ],
-        ),
-      )
-    );
+              Padding(padding: EdgeInsets.only(top: 30))
+            ],
+          ),
+        ));
   }
-
 }

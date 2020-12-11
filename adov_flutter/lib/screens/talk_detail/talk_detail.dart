@@ -22,7 +22,6 @@ class TalkDetail extends StatelessWidget {
           if (!snapshot.hasData) {
             return new Text("Loading...");
           }
-          print("stream builder: " + snapshot.data.toString());
           var talk = TalksDatabase.createTalkFromSnapshot(snapshot.data);
           return Scaffold(
               appBar: AppBar(

@@ -9,7 +9,6 @@ class NextTalkContainer extends StatelessWidget {
   final Talk talk;
   final bool darkTheme;
 
-
   NextTalkContainer(this.talk, {this.darkTheme});
 
   @override
@@ -30,32 +29,26 @@ class NextTalkContainer extends StatelessWidget {
             style: Theme.of(context).textTheme.subtitle,
           ),
           Text(
-            DateFormat('dd/MM/yyyy ').format(talk.day) + talk.time.format(context),
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(color: textColor),
+            DateFormat('dd/MM/yyyy ').format(talk.day) +
+                talk.time.format(context),
+            style:
+                Theme.of(context).textTheme.caption.copyWith(color: textColor),
           ),
           Text(
             talk.title.toUpperCase(),
             key: Key('talk_tile_name_${talk.id}'),
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
-            style:
-            Theme.of(context).textTheme.title.copyWith(color: textColor),
+            style: Theme.of(context).textTheme.title.copyWith(color: textColor),
           ),
           Divider(
             color: textColor,
           ),
-          Text(
-              talk.details,
+          Text(talk.details,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               style: Body1TextStyle.copyWith(
-                  fontSize: SmallTextSize,
-                  color: textColor
-              )
-          ),
+                  fontSize: SmallTextSize, color: textColor)),
         ],
       ),
     );

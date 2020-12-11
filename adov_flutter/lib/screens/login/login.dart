@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:adov_flutter/app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -43,16 +41,17 @@ class LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          (_showTitle) ? Container(
-            child: Text(
-              "Ad\nOv",
-              style: TitleTextStyle.copyWith(
-                color: Colors.white,
-                fontSize: 100,
-              ),
-            ),
-          ) :
-          Text(""),
+          (_showTitle)
+              ? Container(
+                  child: Text(
+                    "Ad\nOv",
+                    style: TitleTextStyle.copyWith(
+                      color: Colors.white,
+                      fontSize: 100,
+                    ),
+                  ),
+                )
+              : Text(""),
           Form(
             key: _formKey,
             child: Column(
@@ -64,7 +63,7 @@ class LoginScreenState extends State<LoginScreen> {
                     focusNode: _focus1,
                     style: TextStyle(color: Colors.grey, fontSize: 24),
                     decoration:
-                    CustomInputDecorator.decorator("Email").copyWith(
+                        CustomInputDecorator.decorator("Email").copyWith(
                       fillColor: Colors.grey,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -102,7 +101,7 @@ class LoginScreenState extends State<LoginScreen> {
                     autocorrect: false,
                     obscureText: true,
                     decoration:
-                    CustomInputDecorator.decorator("Password").copyWith(
+                        CustomInputDecorator.decorator("Password").copyWith(
                       fillColor: Colors.grey,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -190,8 +189,9 @@ class LoginScreenState extends State<LoginScreen> {
       user = (await _auth.signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
-      )).user;
-    } on FirebaseAuthException catch  (e) {
+      ))
+          .user;
+    } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'invalid-email':
           snackBar = SnackBar(content: Text("Invalid Email Format"));
@@ -208,13 +208,10 @@ class LoginScreenState extends State<LoginScreen> {
         default:
           break;
       }
-      print('Failed with error code: ${e.code}');
-      print(e.message);
     }
 
-
     if (user != null) {
-      snackBar = SnackBar(content: Text("Successfully Logged In..."));
+      snackBar = SnackBar(content: Text("Successfully Logged In"));
       _scaffoldKey.currentState.showSnackBar(snackBar);
 
       Future.delayed(Duration(seconds: 1), () {

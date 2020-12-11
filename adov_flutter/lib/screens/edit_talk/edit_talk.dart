@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:toast/toast.dart';
 
-
 TextEditingController titleController = TextEditingController();
 TextEditingController roomController = TextEditingController();
 TextEditingController descriptionController = TextEditingController();
@@ -18,12 +17,12 @@ DateTime selectedDate = DateTime(2020);
 DateTime selectedTime = DateTime(2020);
 
 class EditTalkFormState extends State<EditTalk> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
   final Talk talk;
 
   EditTalkFormState(this.talk);
 
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -82,7 +81,7 @@ class EditTalkFormState extends State<EditTalk> {
                 Divider(color: Colors.grey),
                 Padding(
                     padding:
-                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -100,18 +99,18 @@ class EditTalkFormState extends State<EditTalk> {
                                 padding: EdgeInsets.symmetric(horizontal: 5)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: CustomInputDecorator.decorator("Talk Date"),
+                                decoration:
+                                    CustomInputDecorator.decorator("Talk Date"),
                                 format: DateFormat("dd/MM/yyyy"),
                                 validator: (date) {
                                   return (date == null) ? "" : null;
                                 },
-                                /* initialValue: talk.day, */
                                 onShowPicker: (context, currentValue) {
                                   return showDatePicker(
                                       context: context,
                                       firstDate: DateTime(1900),
                                       initialDate:
-                                      currentValue ?? DateTime.now(),
+                                          currentValue ?? DateTime.now(),
                                       lastDate: DateTime(2100));
                                 },
                                 onChanged: (d) {
@@ -131,7 +130,8 @@ class EditTalkFormState extends State<EditTalk> {
                                 padding: EdgeInsets.symmetric(horizontal: 20)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: CustomInputDecorator.decorator("Talk Time"),
+                                decoration:
+                                    CustomInputDecorator.decorator("Talk Time"),
                                 format: DateFormat("HH:mm"),
                                 validator: (time) {
                                   return (time == null) ? "" : null;
@@ -140,7 +140,8 @@ class EditTalkFormState extends State<EditTalk> {
                                 onChanged: (t) {
                                   selectedTime = t;
                                 },
-                                initialValue: DateTime(2020, 1, 1, talk.time.hour, talk.time.minute),
+                                initialValue: DateTime(2020, 1, 1,
+                                    talk.time.hour, talk.time.minute),
                                 onShowPicker: (context, currentValue) async {
                                   final time = await showTimePicker(
                                     context: context,
@@ -168,7 +169,6 @@ class EditTalkFormState extends State<EditTalk> {
                     validator: (value) {
                       return (value.isEmpty) ? '' : null;
                     },
-
                   ),
                 ),
                 Divider(color: Colors.grey),
@@ -196,9 +196,8 @@ class EditTalkFormState extends State<EditTalk> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            // If the form is valid, display a Snackbar.
-            final snackBar =
-            SnackBar(content: Text("Updating Talk..."));
+            // If the form is valid, display a SnackBar.
+            final snackBar = SnackBar(content: Text("Updating Talk..."));
             FocusScope.of(context).unfocus();
             _scaffoldKey.currentState.showSnackBar(snackBar);
             _editTalk(talk.id);

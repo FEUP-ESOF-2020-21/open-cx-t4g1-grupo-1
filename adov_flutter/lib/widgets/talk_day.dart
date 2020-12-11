@@ -37,6 +37,4 @@ class TalkDay extends StatelessWidget {
           ]),
     );
   }
-
-
 }

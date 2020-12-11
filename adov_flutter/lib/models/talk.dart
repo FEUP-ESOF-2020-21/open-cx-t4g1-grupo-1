@@ -41,8 +41,9 @@ class Talk {
   static List<Talk> getTalksOnDay(List<Talk> talks, DateTime date) {
     List<Talk> returnTalks = [];
     talks.forEach((element) {
-      if ((element.day.day == date.day) && (element.day.month == date.month) && (element.day.year == date.year))
-        returnTalks.add(element);
+      if ((element.day.day == date.day) &&
+          (element.day.month == date.month) &&
+          (element.day.year == date.year)) returnTalks.add(element);
     });
     return returnTalks;
   }
@@ -54,13 +55,14 @@ class Talk {
 
     if (talksDay.isNotEmpty) {
       for (var talk in talksDay) {
-        if (day.isBefore(DateTime(talk.day.year, talk.day.month, talk.day.day, talk.time.hour, talk.time.minute))) {
+        if (day.isBefore(DateTime(talk.day.year, talk.day.month, talk.day.day,
+            talk.time.hour, talk.time.minute))) {
           return talk;
         }
       }
     }
 
-    for ( var i = 0; i < days.length; i++ ) {
+    for (var i = 0; i < days.length; i++) {
       if (days.elementAt(i).isAfter(day)) {
         return getTalksOnDay(talks, days.elementAt(i))[0];
       }

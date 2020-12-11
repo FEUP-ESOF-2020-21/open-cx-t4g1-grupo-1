@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:toast/toast.dart';
 
-
 TextEditingController titleController = TextEditingController();
 TextEditingController roomController = TextEditingController();
 TextEditingController descriptionController = TextEditingController();
@@ -17,7 +16,6 @@ DateTime selectedTime = DateTime(2020);
 class AddTalkFormState extends State<AddTalk> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
-
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -84,7 +82,8 @@ class AddTalkFormState extends State<AddTalk> {
                                 padding: EdgeInsets.symmetric(horizontal: 5)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: CustomInputDecorator.decorator("Talk Date"),
+                                decoration:
+                                    CustomInputDecorator.decorator("Talk Date"),
                                 format: DateFormat("dd/MM/yyyy"),
                                 validator: (date) {
                                   return (date == null) ? "" : null;
@@ -113,7 +112,8 @@ class AddTalkFormState extends State<AddTalk> {
                                 padding: EdgeInsets.symmetric(horizontal: 20)),
                             Expanded(
                               child: DateTimeField(
-                                decoration: CustomInputDecorator.decorator("Talk Time"),
+                                decoration:
+                                    CustomInputDecorator.decorator("Talk Time"),
                                 format: DateFormat("HH:mm"),
                                 validator: (time) {
                                   return (time == null) ? "" : null;
@@ -176,8 +176,7 @@ class AddTalkFormState extends State<AddTalk> {
         onPressed: () {
           if (_formKey.currentState.validate()) {
             // If the form is valid, display a Snackbar.
-            final snackBar =
-                SnackBar(content: Text("Adding Talk..."));
+            final snackBar = SnackBar(content: Text("Adding Talk..."));
             FocusScope.of(context).unfocus();
             _scaffoldKey.currentState.showSnackBar(snackBar);
             _addTalk();

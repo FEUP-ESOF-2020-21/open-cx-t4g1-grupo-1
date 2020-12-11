@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../style.dart';
 
-const LocationTileHeight = 100.0;
+const TalkTileHeight = 100.0;
 
 class TalkTile extends StatelessWidget {
   final Talk talk;
@@ -29,7 +29,8 @@ class TalkTile extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle,
             ),
             Text(
-              DateFormat('dd/MM/yyyy ').format(talk.day) + talk.time.format(context),
+              DateFormat('dd/MM/yyyy ').format(talk.day) +
+                  talk.time.format(context),
               style: Theme.of(context)
                   .textTheme
                   .caption
@@ -41,7 +42,7 @@ class TalkTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style:
-              Theme.of(context).textTheme.title.copyWith(color: textColor),
+                  Theme.of(context).textTheme.title.copyWith(color: textColor),
             ),
           ]),
     );

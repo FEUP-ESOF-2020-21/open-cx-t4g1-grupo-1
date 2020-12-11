@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 const LargeTextSize = 22.0;
@@ -21,7 +20,8 @@ const Color InnerComponentColor = Color(0xFF191F38);
 const DefaultPaddingHorizontal = 12.0;
 
 class ComponentBoxStyle {
-  static create({double radius: 0, Color color: ComponentColor, bool shadow: false}) {
+  static create(
+      {double radius: 0, Color color: ComponentColor, bool shadow: false}) {
     return BoxDecoration(
       color: color,
       borderRadius: BorderRadius.circular(radius),
@@ -70,11 +70,7 @@ class CustomInputDecorator extends InputDecoration {
           width: 1.5,
         ),
       ),
-      errorStyle: TextStyle(
-        height: 0,
-        color: Colors.red
-      ),
-
+      errorStyle: TextStyle(height: 0, color: Colors.red),
     );
   }
 }

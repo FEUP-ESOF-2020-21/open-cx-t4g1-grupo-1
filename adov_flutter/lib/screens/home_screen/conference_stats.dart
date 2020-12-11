@@ -33,52 +33,55 @@ class ConferenceStats extends StatelessWidget {
                 ),
               ),
               StreamBuilder(
-                stream: FirebaseFirestore.instance.doc("conference/details").snapshots(),
+                stream: FirebaseFirestore.instance
+                    .doc("conference/details")
+                    .snapshots(),
                 builder: (context, snapshot) {
-                  if (!snapshot.hasData)
-                    return Text("Loading...");
+                  if (!snapshot.hasData) return Text("Loading...");
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        decoration: ComponentBoxStyle.create(radius: 7.5, color: InnerComponentColor),
+                        decoration: ComponentBoxStyle.create(
+                            radius: 7.5, color: InnerComponentColor),
                         height: 125,
                         width: 160,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                                snapshot.data["days"].toString(),
+                            Text(snapshot.data["days"].toString(),
                                 style: TitleTextStyle.copyWith(
                                   color: textColor,
                                   fontSize: 64,
                                   fontWeight: FontWeight.w400,
-                                )
-                            ),
-                            Text("Days", style: SubTitleTextStyle.copyWith(fontWeight: FontWeight.bold)),
+                                )),
+                            Text("Days",
+                                style: SubTitleTextStyle.copyWith(
+                                    fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
-                        decoration: ComponentBoxStyle.create(radius: 7.5, color: InnerComponentColor),
+                        decoration: ComponentBoxStyle.create(
+                            radius: 7.5, color: InnerComponentColor),
                         height: 125,
                         width: 160,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                                snapshot.data["talks"].toString(),
+                            Text(snapshot.data["talks"].toString(),
                                 style: TitleTextStyle.copyWith(
                                   color: textColor,
                                   fontSize: 64,
                                   fontWeight: FontWeight.w400,
-                                )
-                            ),
-                            Text("Talks", style: SubTitleTextStyle.copyWith(fontWeight: FontWeight.bold)),
+                                )),
+                            Text("Talks",
+                                style: SubTitleTextStyle.copyWith(
+                                    fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
@@ -86,8 +89,7 @@ class ConferenceStats extends StatelessWidget {
                   );
                 },
               )
-            ]
-        ),
+            ]),
       ),
     );
   }
