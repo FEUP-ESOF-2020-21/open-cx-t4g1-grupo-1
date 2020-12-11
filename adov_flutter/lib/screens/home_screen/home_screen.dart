@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../app.dart';
 import '../../style.dart';
+import '../../database/talks_database.dart';
 import 'conference_details.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -58,18 +59,22 @@ class HomeScreenState extends State<HomeScreen> {
                   style: ListItemDrawerStyle,
                 ),
               ),
-              /*
               ListTile(
                 leading: Icon(Icons.developer_board),
-                title: Text('Developer Option: Add Talks to Database', style: ListItemDrawerStyle,),
+                title: Text(
+                  'Developer Option: Add Talks to Database',
+                  style: ListItemDrawerStyle,
+                ),
                 onTap: () => TalksDatabase.addTalksToDatabase(),
               ),
               ListTile(
                 leading: Icon(Icons.developer_board),
-                title: Text('Developer Option: Remove Talks from Database', style: ListItemDrawerStyle,),
+                title: Text(
+                  'Developer Option: Remove Talks from Database',
+                  style: ListItemDrawerStyle,
+                ),
                 onTap: () => TalksDatabase.removeTalksFromDatabase(),
               ),
-               */
               for (var widget in _getDrawerItems()) widget,
               ListTile(
                 title: Text(
