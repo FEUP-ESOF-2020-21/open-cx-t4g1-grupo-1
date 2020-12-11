@@ -150,7 +150,10 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 
 
 ### Physical architecture
+<div style="text-align:center"><img src="uml/physical-architecture.jpg" /></div>
 
+* ### Cloud Firestore
+  - It takes the form of a cloud-based NoSQL database server used for storing and syncing data. It's a high-performance database that supports automatic scaling. Besides, it is quite easy to use and very reliable. One of the unique features is the syncing of data across multiple client apps using realtime listeners, used in our app.
 
 ### Prototype
 
