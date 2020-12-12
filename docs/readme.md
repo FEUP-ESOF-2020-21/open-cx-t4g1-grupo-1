@@ -148,9 +148,19 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 
 ### Logical architecture
 
+![logical-architecture-diagram](https://i.imgur.com/20MdCcD.png)
+
+The high-level logical structure of our code follows the **Model-View-Controller Architectural Pattern**, also known as the **MVC Pattern**.  
+- The **Model** corresponds to the models package in the application. It stores all the relevant data used by AdOv such as talks' time and place, speakers and description. 
+- The **View** corresponds to the widgets package. It displays the app information and state, for example, the login page, conference schedule page and the talk page.
+- Finally, the **Controller** corresponds to the screens package. It's responsible for performing the actions requested by the user and generate the results to be displayed. One example is when a host changes a talk's schedule, the screens package will take care of changing the data so that it can be displayed by the widgets.
+
 
 ### Physical architecture
+<div style="text-align:center"><img src="uml/physical-architecture.jpg" /></div>
 
+* ### Cloud Firestore
+  - It takes the form of a cloud-based NoSQL database server used for storing and syncing data. It's a high-performance database that supports automatic scaling. Besides, it is quite easy to use and very reliable. One of the unique features is the syncing of data across multiple client apps using realtime listeners, used in our app.
 
 ### Prototype
 
