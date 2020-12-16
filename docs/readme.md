@@ -1,4 +1,4 @@
-# openCX-cx-t4g1-grupo-1 Development Report
+# openCX-cx-t4g1-grupo-1 Development Report ![Flutter CI](https://github.com/FEUP-ESOF-2020-21/open-cx-t4g1-grupo-1/workflows/Flutter%20CI/badge.svg)
 
 Welcome to the documentation pages of the AdOv of **openCX**!
 
