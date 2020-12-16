@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import '../../style.dart';
 
 class TalksSchedule extends StatelessWidget {
+  TalksSchedule() : super(key: Key("Schedule_Screen"));
+
   @override
   Widget build(BuildContext context) {
     ScrollController _controller = new ScrollController();

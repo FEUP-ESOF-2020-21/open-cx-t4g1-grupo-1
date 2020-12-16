@@ -51,6 +51,7 @@ class HomeScreenState extends State<HomeScreen> {
                     style: TitleTextStyle.copyWith(color: Colors.white)),
               ),
               ListTile(
+                key: Key("scheduleButton"),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, TalksScheduleRoute);
@@ -61,7 +62,7 @@ class HomeScreenState extends State<HomeScreen> {
                   style: ListItemDrawerStyle,
                 ),
               ),
-              ListTile(
+              /*ListTile(
                 leading: Icon(Icons.developer_board),
                 title: Text(
                   'Developer Option: Add Talks to Database',
@@ -76,7 +77,7 @@ class HomeScreenState extends State<HomeScreen> {
                   style: ListItemDrawerStyle,
                 ),
                 onTap: () => TalksDatabase.removeTalksFromDatabase(),
-              ),
+              ),*/
               for (var widget in _getDrawerItems()) widget,
               ListTile(
                 title: Text(

@@ -54,7 +54,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ),
               Padding(padding: EdgeInsets.only(top: 125)),
-              AnimatedText("tap to continue"),
+              AnimatedText("tap to continue"), // to remove when testing
               Padding(padding: EdgeInsets.only(top: 50)),
               (!isLoggedIn)
                   ? OutlineButton(

@@ -12,7 +12,7 @@
         Then I expect the "warning" to be "Invalid Email Format"
         Then I expect to be in "Login_Screen" page
 
-    Scenario: Login with non existant user
+    Scenario: Login with non existent user
         Given I'm in "Welcome_Screen" page
         When I tap the "Login_Button" button
         Then I expect to be in "Login_Screen" page
