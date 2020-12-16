@@ -1,5 +1,5 @@
 # openCX-cx-t4g1-grupo-1 Development Report
- 
+
 Welcome to the documentation pages of the AdOv of **openCX**!
 
 * Business modeling 
@@ -31,13 +31,14 @@ Welcome to the documentation pages of the AdOv of **openCX**!
 
 ## Product Vision
 
-**A Simple and User Friendly App to provide the best possible hourly organization and adaptation to timetable changes**
+**A Simple and User Friendly App to provide the best possible schedule organization and adaptation to timetable changes**
 
 ---
 ## Elevator Pitch
-Has it ever happened to you getting to a session and finding out it was postponed?
+Has it ever happened to you getting to a talk in a conference and finding out it was postponed?
+
 Our app, **AdOv**, allows you to check the event schedule and it gives the staff the opportunity to change it in case of a setback, sending a notification to every user on the conference.
-Enjoy the extra minutes of coffee break while still showing up on time to the next lecture! (lecture ou talk ou session ou meeting)
+Enjoy the extra minutes of coffee break while still showing up on time to the next session!
 
 ---
 ## Requirements
@@ -47,64 +48,64 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 ![](https://i.imgur.com/52w7pDm.png)
 
 **Check Agenda**
-* **Actor**. Atendee
-* **Description**. The Atendee can check the conference's agenda 
-* **Preconditions and Postconditions**. The Atendee needs to go to the agenda page from a Menu
+* **Actor**. Attendee
+* **Description**. The Attendee can check the conference's agenda 
+* **Preconditions and Postconditions**. The Attendee needs to go to the agenda page from a Menu
 
-* **Normal Flow**. 
-  * The Atendee goes to the Agenda page
+* **Normal Flow**
+  * The Attendee goes to the Agenda page
   * The System fetches the most recent data
   * The System display the data
 
 * **Alternative flows and exceptions**
-  * The atendee might want to see the agenda without internet connection, if a talk was changed, the data displayed on the app wont be updated. It will be updated as soon as the atendee turns on the internet
+  * The attendee might want to see the agenda without internet connection, if a talk was changed, the data displayed on the app wont be updated. It will be updated as soon as the attendee establishes internet connection
 
 **Check Notifications**
-* **Actor**. Atendee
+* **Actor**. Attendee
 
-* **Description**. The atendee can receive notifications and be updated without opening the app
+* **Description**. The attendee can receive notifications and be updated without opening the app
 
-* **Preconditions and Postconditions**. The atendee only needs to turn on the phone screen to see the notification
+* **Preconditions and Postconditions**. The attendee only needs to turn on the phone screen to see the notification
 
-* **Normal Flow**.
+* **Normal Flow**
   * The system sends a notification describing the change
-  * The atendee turns on the phone screen and sees the updates
+  * The attendee turns on the phone screen and sees the updates
 
 * **Alternative flows and exceptions**
-  * The atendee can tap on the notification to automatically enter the app and see more detailed information. The notification wont be received if the user doesnt have internet connection but will be as soon as he turns it on
+  * The attendee can tap on the notification to automatically enter the app and see more detailed information. The notification wont be received if the user doesn't have internet connection but will be as soon as he turns it on
 
 **Reschedule Talk**
 
 * **Actor**. Conference host
 
-* **Description**. The conference host can send a notification to the atendees when reshedules a talk
+* **Description**. The conference host can send a notification to the attendees when reschedules a talk
 
-* **Preconditions and Postconditions**. The conference host needs to sign in as a staff member and go to the edit talks tab, reschedule the talk, and submit the changes
+* **Preconditions and Postconditions**. The conference host needs to sign in as a staff member and go to the edit talks tab, reschedule the talk, and submit the changes.
 
-* **Normal Flow**.
+* **Normal Flow**
   * The conference host signs in on the app
   * Goes to the menu choosing the edit talks tab
   * Reschedules the desired talk
-  * The system will send a notification to all of the atendees
+  * The system will send a notification to all of the attendees
 
 * **Alternative flows and exceptions**
-  * The conference host can change the information without internet connection and the system will ensure that every atendee receives the notification as soon as the conference host turns on the internet
+  * The conference host can change the information without internet connection and the system will ensure that every attendee receives the notification as soon as the conference host turns on the internet
 
 **Change Room**
 * **Actor**. Conference host
 
-* **Description**. The conference host can send a notification to the atendees when the room of a talk is changed
+* **Description**. The conference host can send a notification to the attendees when the room of a talk is changed
 
 * **Preconditions and Postconditions**. The conference host needs to sign in as a staff member and go to the edit talks tab, make the room change and submit the changes
 
-* **Normal Flow**.
+* **Normal Flow**
   * The conference host signs in on the app
   * Goes to the menu choosing the edit talks tab
   * Changes the room of the desired talk
-  * The system will send a notification to all of the atendees
+  * The system will send a notification to all of the attendees
 
 * **Alternative flows and exceptions**
-  * The conference host can change the information without internet connection and the system will ensure that every atendee receives the notification as soon as the conference host turns on the internet
+  * The conference host can change the information without internet connection and the system will ensure that every attendee receives the notification as soon as the conference host turns on the internet
 
 ### [User stories](userstories.md)
 **List**:
@@ -141,8 +142,16 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 
 ### Domain model
 
----
+![domain-model](https://i.imgur.com/AFWYLPs.png)
 
+- Our app users can be either **staff members** or **guests**. The staff members organize the conference and the guests attend it.
+- **Staff members** are the only ones with credentials as they need to have permission to edit conference information.
+- The conference:
+  - has a **title**, a **start date**, an **end date** and a **description**.
+  - can have one or more **sponsors**.
+  - has many **talks**, defined by their **title**, **room**, **date** and **details**.
+
+---
 ## Architecture and Design
 
 
@@ -151,7 +160,7 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 ![logical-architecture-diagram](https://i.imgur.com/20MdCcD.png)
 
 The high-level logical structure of our code follows the **Model-View-Controller Architectural Pattern**, also known as the **MVC Pattern**.  
-- The **Model** corresponds to the models package in the application. It stores all the relevant data used by AdOv such as talks' time and place, speakers and description. 
+- The **Model** corresponds to the models package in the application. It stores all the relevant data used by AdOv such as talks' time, place and description. 
 - The **View** corresponds to the widgets package. It displays the app information and state, for example, the login page, conference schedule page and the talk page.
 - Finally, the **Controller** corresponds to the screens package. It's responsible for performing the actions requested by the user and generate the results to be displayed. One example is when a host changes a talk's schedule, the screens package will take care of changing the data so that it can be displayed by the widgets.
 
@@ -159,29 +168,95 @@ The high-level logical structure of our code follows the **Model-View-Controller
 ### Physical architecture
 <div style="text-align:center"><img src="uml/physical-architecture.jpg" /></div>
 
-* ### Cloud Firestore
-  - It takes the form of a cloud-based NoSQL database server used for storing and syncing data. It's a high-performance database that supports automatic scaling. Besides, it is quite easy to use and very reliable. One of the unique features is the syncing of data across multiple client apps using realtime listeners, used in our app.
+* Cloud Firestore
+
+  It takes the form of a cloud-based NoSQL database server used for storing and syncing data. It's a high-performance database that supports automatic scaling. Besides, it is quite easy to use and very reliable. One of the unique features is the syncing of data across multiple client apps using realtime listeners, used in our app.
+
+* Firebase Cloud Functions
+
+  One of our goals is to send a notification when a important event happens, such as adding a new talk to the database, removing a talk, or editing the details of a talk, and as we are using Firestore to store the data the best option would be to implement the Firebase Cloud Functions. Cloud Functions for Firebase is a serverless framework that lets us automatically run back-end code in response to events triggered by Firebase features and HTTPS requests. The code is written in JavaScript and it is stored in Google's could running in a managed environment.
+
+* Firebase Cloud Messaging
+
+  Changing information on the database triggers the cloud functions, and those functions send a push notification to devices register to a said topic. We register every user on the moment they open the app for the first time to a topic called `Talks`. Therefore, whenever a talk is edited, added or removed, every user connected will receive a notification about that event.
 
 ### Prototype
+
+We started off by designing the UI on Figma (these UI prototypes can be found on the user stories' issues), then the question was what the best technology to implement our App, Flutter was the unanimous choice in a set of some technologies such as pure Android (Kotlin) and React Native.
+
+Our approach was a bit of "from the inside out", we developed from the Talk Details Screen to the Welcome Screen.
+
+On the early stages of the app we didn't have a database connection, our data was static, so at a point the question was: "What database architecture should we chose?", and the answer was Firebase Firestore, as described in the previous section. Firestore was chosen in a set of options such as internal SQLite Database and Firebase Realtime Database. Manipulating the data was probably the most challenging task, but as it is a popular new technology, there's a lot of guides and community support on the Web, which made the process a bit easier, but still challenging, as we are going to demonstrate a bit on the next section.
 
 ---
 
 ## Implementation
 
+On our Home Screen we present a brief of the Conference, information like number of talks, number of days (Conference duration), the next talk, sponsors, and some details about the conference itself. So one thing we wanted is to count the number of talks, and the total number of days. Well, counting the number of talks wasn't so difficult, but counting the number of days was a bit challenging, as we need to return a set of days from all talks. We developed a method to do this in a simple way, here's a snippet:
+
+```dart
+await collectionReference.get().then((querySnapshot) {
+    Set<DateTime> days = Set();
+    querySnapshot.docs.forEach((element) {
+        days.add(DateTime(
+            element.data()["year"], element.data()["month"], element.data()["day"],
+        ));
+    });
+    conferenceRef.update({"days": days.length});
+});
+```
+
+This is performed in the back-end and async from the main app. But the main challenge was to get the next talk. This was a interesting feature, we implemented the schedule to highlight the next talk, and also, the next talk is present as a widget on the Home Screen. The method to get the next talk can be found on [Talk.dart](../adov_flutter/lib/models/talk.dart) called `getNextTalk`.
+
 ---
 ## Test
+
+For testing we used the framework `flutter_gherkin` to ensure that our application is working as intended it's key aspects.
+### Testing plan
+
+The features to be tested are the following:
+- Logging in as an Administrator
+- Entering the app as a User
+- Login out as an Administrator
+- Checking the Schedule 
+
+We decided to test this features because they were the ones that have the most amount of user input and are the most error-prone.
+
+## Test Case Specification
+
+### Logging in as an Administrator
+
+This test has 4 possible scenarios:
+- the user inputs a invalid e-mail format to login, the app displays a warning message and returs to the login input 
+- the user attempts to login with a non existant user, which causes the app to display a warning message and returs to the login input 
+- the user is trying to login in but inputs the wrong password, the app displays a warning message and let's the user try again
+- the user inputs everythinf correctly and logs into the app. The app then presents the Home screen
+
+### Entering the app as a User
+
+To verify that the user can enter the app from the Welcome Screen, he can tap anywhere on the screen, except for the login button, to enter the app and go to the Home Screen
+
+### Login out as an Administrator
+
+After beeing logged in, an administrator can log out by going to the sidebar and pressing the "log out" button
+
+### Checking the Schedule
+
+If a user wants to check the schedule, he needs to go to the Home Screen, open the sidebar, select the "schedule" button and the app takes him to the Schedule screen.
+
 
 
 ---
 ## Configuration and change management
+
+For change management we used **Feature Branches** and **Pull Requests** linked to **Issues**. Those **Issues** were assigned to **Milestones**, one for each **Iteration**. This has proven to be very helpful to keep everything organized and the product increment was easier to evaluate based on the Milestones.
 
 
 ---
 
 ## Project management
 
-  * [Github Projects](https://github.com/FEUP-ESOF-2020-21/open-cx-t4g1-grupo-1/projects/2)
-  * [Github Issues](https://github.com/FEUP-ESOF-2020-21/open-cx-t4g1-grupo-1/issues)
+For Project Management we used [Github Projects](https://github.com/FEUP-ESOF-2020-21/open-cx-t4g1-grupo-1/projects/2), automated with Issues and Pull Requests for on-open and review progress, as we established a minimum of 2 member's review to merge a Pull Request, so we all know what's happening and avoid unawareness. You can find the Issues [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t4g1-grupo-1/issues).
 
 ---
 
