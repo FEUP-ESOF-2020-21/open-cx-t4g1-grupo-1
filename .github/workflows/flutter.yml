@@ -25,12 +25,7 @@ jobs:
     # Get flutter dependencies.
     - name: Pub Get
       working-directory: ./adov_flutter
-      run: flutter pub get
-    
-    # Statically analyze the Dart code for any errors.
-    - name: Analyze for errors
-      working-directory: ./adov_flutter
-      run: flutter analyze .        
+      run: flutter pub get     
     
     # Run widget tests for our flutter project.
     - name: Test
