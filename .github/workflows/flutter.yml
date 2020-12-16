@@ -27,11 +27,6 @@ jobs:
       working-directory: ./adov_flutter
       run: flutter pub get
     
-    # Check for any formatting issues in the code.
-    - name: Format
-      working-directory: ./adov_flutter
-      run: flutter format --set-exit-if-changed .
-    
     # Statically analyze the Dart code for any errors.
     - name: Analyze for errors
       working-directory: ./adov_flutter
