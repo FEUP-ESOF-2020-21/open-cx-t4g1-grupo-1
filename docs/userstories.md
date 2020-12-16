@@ -79,7 +79,7 @@ M
 ## **Story #5**
 *As a conference host, I want to have the opportunity to reschedule a talk when a problem happens and still be able to inform the attendees about that change.*
 #### MockUp
-![No MockUp]()
+**No MockUp**
 #### Acceptance Test
 ```gherkin
 Given I want to reschedule a talk,
@@ -94,7 +94,7 @@ M
 ## **Story #6**
 *As a conference host, I want to have the opportunity to change a talk’s room when I need to, and still notify the conference attendees about that change in time.*
 #### MockUp
-![No MockUp]()
+**No MockUp**
 #### Acceptance Test
 ```gherkin
 Given I want to change the talk's room,
@@ -124,7 +124,7 @@ S
 ## **Story #8**
 *As a conference host, I want to to be able to send a notification when i make changes to a talk location.*
 #### MockUp
-![No MockUp]()
+**No MockUp**
 #### Acceptance Test
 ```gherkin
 Given I want to notify for room changes,
@@ -139,7 +139,7 @@ S
 ## **Story #9**
 *As a conference host, I want to be able to send a notification when my talk needs to be postponed.*
 #### MockUp
-![No MockUp]()
+**No MockUp**
 #### Acceptance Test
 ```gherkin
 Given I want to notify for schedule changes,
@@ -229,7 +229,7 @@ L
 ## **Story #15**
 *As a conference host i want to be able to delete a talk from the conference*
 #### MockUp
-![No MockUp]()
+**No MockUp**
 #### Acceptance Test
 ```gherkin
 Given I want to delete a talk from the conference,
