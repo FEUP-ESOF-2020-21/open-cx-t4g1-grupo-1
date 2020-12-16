@@ -58,6 +58,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
               Padding(padding: EdgeInsets.only(top: 50)),
               (!isLoggedIn)
                   ? OutlineButton(
+                      key: Key("Login_Button"),
                       onPressed: () => Navigator.pushReplacementNamed(
                           context, LoginScreenRoute),
                       child: Text(

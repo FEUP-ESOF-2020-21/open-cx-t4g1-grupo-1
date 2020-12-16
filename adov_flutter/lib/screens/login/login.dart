@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import '../../style.dart';
 
 class LoginScreen extends StatefulWidget {
+  LoginScreen() : super(key: Key("Login_Screen"));
+
   @override
   State<StatefulWidget> createState() {
     return LoginScreenState();
@@ -59,6 +61,7 @@ class LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: TextFormField(
+                    key: Key("emailField"),
                     controller: _emailController,
                     focusNode: _focus1,
                     style: TextStyle(color: Colors.grey, fontSize: 24),
@@ -92,6 +95,7 @@ class LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   child: TextFormField(
+                    key: Key("passwordField"),
                     controller: _passwordController,
                     style: TextStyle(
                       color: Colors.grey,
@@ -130,6 +134,7 @@ class LoginScreenState extends State<LoginScreen> {
                 Container(
                   alignment: Alignment.center,
                   child: OutlineButton(
+                    key: Key("signInButton"),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         FocusScope.of(context).unfocus();
@@ -194,15 +199,18 @@ class LoginScreenState extends State<LoginScreen> {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'invalid-email':
-          snackBar = SnackBar(content: Text("Invalid Email Format"));
+          snackBar = SnackBar(
+              content: Text("Invalid Email Format", key: Key("warning")));
           _scaffoldKey.currentState.showSnackBar(snackBar);
           break;
         case 'user-not-found':
-          snackBar = SnackBar(content: Text("User Not Found"));
+          snackBar =
+              SnackBar(content: Text("User Not Found", key: Key("warning")));
           _scaffoldKey.currentState.showSnackBar(snackBar);
           break;
         case 'wrong-password':
-          snackBar = SnackBar(content: Text("Wrong Password"));
+          snackBar =
+              SnackBar(content: Text("Wrong Password", key: Key("warning")));
           _scaffoldKey.currentState.showSnackBar(snackBar);
           break;
         default:
@@ -211,7 +219,8 @@ class LoginScreenState extends State<LoginScreen> {
     }
 
     if (user != null) {
-      snackBar = SnackBar(content: Text("Successfully Logged In"));
+      snackBar = SnackBar(
+          content: Text("Successfully Logged In", key: Key("warning")));
       _scaffoldKey.currentState.showSnackBar(snackBar);
 
       Future.delayed(Duration(seconds: 1), () {

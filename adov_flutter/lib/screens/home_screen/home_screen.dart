@@ -128,6 +128,7 @@ class HomeScreenState extends State<HomeScreen> {
           },
         ),
         ListTile(
+            key: Key("logoutButton"),
             leading: Icon(Icons.logout),
             title: Text(
               'Logout',
