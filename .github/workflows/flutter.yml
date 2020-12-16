@@ -31,4 +31,10 @@ jobs:
     - name: Build APK
       working-directory: ./adov_flutter
       run: flutter build apk
+    
+    - name: Deploy
+      uses: actions/upload-artifact@v1
+      with:
+        name: release-apk
+        path: build/app/outputs/apk/release/app-release.apk
         
