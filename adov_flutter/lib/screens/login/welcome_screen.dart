@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import '../../style.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  WelcomeScreen() : super(key: Key("Welcome_Screen"));
+
   @override
   State createState() => WelcomeScreenState();
 }

@@ -12,6 +12,8 @@ import '../../database/talks_database.dart';
 import 'conference_details.dart';
 
 class HomeScreen extends StatefulWidget {
+  HomeScreen() : super(key: Key("Home_Screen"));
+
   @override
   State createState() => HomeScreenState();
 }
