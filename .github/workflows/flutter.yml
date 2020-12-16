@@ -27,11 +27,6 @@ jobs:
       working-directory: ./adov_flutter
       run: flutter pub get     
     
-    # Run widget tests for our flutter project.
-    - name: Test
-      working-directory: ./adov_flutter
-      run: flutter test  
-    
     # Build apk.
     - name: Build APK
       working-directory: ./adov_flutter
