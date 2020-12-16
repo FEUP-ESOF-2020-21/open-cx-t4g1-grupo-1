@@ -27,9 +27,9 @@ When I unlock my phone,
 Then I can read the notification.
 ```
 ## Value
-High/Medium/Low
+Must Have
 #### Effort
-> To Fill
+S
 
 ## **Story #2**
 *As a conference attendee, I want to know as soon as possible if there is a change in a talk location.*
@@ -42,9 +42,9 @@ When I unlock my phone,
 Then I can read the notification.
 ```
 ## Value
-High/Medium/Low
+Must Have
 #### Effort
-> To Fill
+S
 
 ## **Story #3**
 *As an app user i would like to see the updated conference timetable in a specific section of the app.*
@@ -57,9 +57,9 @@ When enter the timetable section of the app,
 Then I can see the see the updated schedule.
 ```
 #### Value
-High
+Must Have
 #### Effort
-> To Fill
+XL
 
 ## **Story #4**
 *As an app user i would like to have a preview of all of the conference information in a not so detailed manner.*
@@ -72,9 +72,9 @@ When enter the timetable section of the app,
 Then I can see the see the conference information.
 ```
 #### Value
-Low
+Must Have
 #### Effort
-> To Fill
+M
 
 ## **Story #5**
 *As a conference host, I want to have the opportunity to reschedule a talk when a problem happens and still be able to inform the attendees about that change.*
@@ -87,9 +87,9 @@ When enter the app as a host,
 Then I can change the talk information.
 ```
 #### Value
-High
+Must Have
 #### Effort
-> To Fill
+M
 
 ## **Story #6**
 *As a conference host, I want to have the opportunity to change a talk’s room when I need to, and still notify the conference attendees about that change in time.*
@@ -102,9 +102,9 @@ When enter the app as a host,
 Then I can change the talk information.
 ```
 #### Value
-High
+Must Have
 #### Effort
-> To Fill
+M
 
 ## **Story #7**
 *As an app user i would like to know all of the details about a talk.*
@@ -117,9 +117,9 @@ When enter any talk details section of the app,
 Then I can see the details about a specific talk.
 ```
 #### Value
-Medium
+Should Have
 #### Effort
-> To Fill
+S
 
 ## **Story #8**
 *As a conference host, I want to to be able to send a notification when i make changes to a talk location.*
@@ -132,9 +132,9 @@ When I make changes to a talk location,
 Then I can have everyone notified.
 ```
 #### Value
-Medium
+Should Have
 #### Effort
-> To Fill
+S
 
 ## **Story #9**
 *As a conference host, I want to be able to send a notification when my talk needs to be postponed.*
@@ -147,9 +147,9 @@ When I make changes to a talk schedule,
 Then I can have everyone notified.
 ```
 #### Value
-Medium
+Should Have
 #### Effort
-> To Fill
+S
 
 ## **Story #10**
 *As an app user i want to be presented with a welcoming initial screen and sign in as a guest to see all information about the conference*
@@ -162,9 +162,9 @@ When I enter the app,
 Then I can see informations about the conference.
 ```
 #### Value
-High
+Must Have
 #### Effort
-> To Fill
+M
 
 ## **Story #11**
 *As an app user i want to be presented with a welcoming initial screen and sign in as a staff member in order to reschedule talks and change talk locations when needed.*
@@ -177,9 +177,9 @@ When I enter the app,
 Then I can change informations about the conference.
 ```
 #### Value
-High
+Must Have
 #### Effort
-> To Fill
+L
 
 ## **Story #12**
 *As an app user i want to be presented with information about the conference that i am attending.*
@@ -192,9 +192,9 @@ When I enter the home page,
 Then I can know more about what i am going to attend.
 ```
 #### Value
-Medium
+Should Have
 #### Effort
-> To Fill
+M
 
 ## **Story #13**
 *As an app user i want to be presented with information about the next event that is happening on the conference without consulting the timetable.*
@@ -207,9 +207,9 @@ When I enter the home page,
 Then I can easily know what is the next event.
 ```
 #### Value
-Medium
+Should Have
 #### Effort
-> To Fill
+M
 
 ## **Story #14**
 *As a conference host i want to be able to add a talk to the conference*
@@ -222,9 +222,9 @@ When I press the + floating button,
 Then I can fill in the details and add a talk.
 ```
 #### Value
-Medium
+Should Have
 #### Effort
-> To Fill
+L
 
 ## **Story #15**
 *As a conference host i want to be able to delete a talk from the conference*
@@ -237,6 +237,6 @@ When I select a specific talk as a conference organizer,
 Then I can delete that talk.
 ```
 #### Value
-Medium
+Should Have
 #### Effort
-> To Fill
+S
