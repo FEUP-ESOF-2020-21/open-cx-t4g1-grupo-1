@@ -35,7 +35,8 @@ Welcome to the documentation pages of the AdOv of **openCX**!
 
 ---
 ## Elevator Pitch
-Has it ever happened to you getting to a session and finding out it was postponed?
+Has it ever happened to you getting to a talk in a conference and finding out it was postponed?
+
 Our app, **AdOv**, allows you to check the event schedule and it gives the staff the opportunity to change it in case of a setback, sending a notification to every user on the conference.
 Enjoy the extra minutes of coffee break while still showing up on time to the next session!
 
@@ -79,7 +80,7 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 
 * **Description**. The conference host can send a notification to the attendees when reschedules a talk
 
-* **Preconditions and Postconditions**. The conference host needs to sign in as a staff member and go to the edit talks tab, reschedule the talk, and submit the changes
+* **Preconditions and Postconditions**. The conference host needs to sign in as a staff member and go to the edit talks tab, reschedule the talk, and submit the changes.
 
 * **Normal Flow**
   * The conference host signs in on the app
@@ -141,8 +142,16 @@ Enjoy the extra minutes of coffee break while still showing up on time to the ne
 
 ### Domain model
 
----
+![domain-model](https://i.imgur.com/AFWYLPs.png)
 
+- Our app users can be either **staff members** or **guests**. The staff members organize the conference and the guests attend it.
+- **Staff members** are the only ones with credentials as they need to have permission to edit conference information.
+- The conference:
+  - has a **title**, a **start date**, an **end date** and a **description**.
+  - can have one or more **sponsors**.
+  - has many **talks**, defined by their **title**, **room**, **date** and **details**.
+
+---
 ## Architecture and Design
 
 
