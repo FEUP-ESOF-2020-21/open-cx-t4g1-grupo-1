@@ -21,19 +21,28 @@ jobs:
       with:
         channel: 'beta' # 'dev', 'alpha', default to: 'stable'
         # flutter-version: '1.12.x' # you can also specify exact version of flutter
-    - run: cd adov_flutter
     
     # Get flutter dependencies.
-    - run: flutter pub get
+    - run: 
+        cd adov_flutter
+        flutter pub get
     
     # Check for any formatting issues in the code.
-    - run: flutter format --set-exit-if-changed .
+    - run: 
+        cd adov_flutter
+        flutter format --set-exit-if-changed .
     
     # Statically analyze the Dart code for any errors.
-    - run: flutter analyze .
+    - run: 
+        cd adov_flutter
+        flutter analyze .
     
     # Run widget tests for our flutter project.
-    - run: flutter test
+    - run: 
+        cd adov_flutter
+        flutter test
     
     # Build apk.
-    - run: flutter build apk
+    - run: 
+        cd adov_flutter
+        flutter build apk
