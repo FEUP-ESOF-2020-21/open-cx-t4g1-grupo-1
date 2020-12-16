@@ -202,6 +202,40 @@ This is performed in the back-end and async from the main app. But the main chal
 ---
 ## Test
 
+For testing we used the framework `flutter_gherkin` to ensure that our application is working as intended it's key aspects.
+### Testing plan
+
+The features to be tested are the following:
+- Logging in as an Administrator
+- Entering the app as a User
+- Login out as an Administrator
+- Checking the Schedule 
+
+We decided to test this features because they were the ones that have the most amount of user input and are the most error-prone.
+
+## Test Case Specification
+
+### Logging in as an Administrator
+
+This test has 4 possible scenarios:
+- the user inputs a invalid e-mail format to login, the app displays a warning message and returs to the login input 
+- the user attempts to login with a non existant user, which causes the app to display a warning message and returs to the login input 
+- the user is trying to login in but inputs the wrong password, the app displays a warning message and let's the user try again
+- the user inputs everythinf correctly and logs into the app. The app then presents the Home screen
+
+### Entering the app as a User
+
+To verify that the user can enter the app from the Welcome Screen, he can tap anywhere on the screen, except for the login button, to enter the app and go to the Home Screen
+
+### Login out as an Administrator
+
+After beeing logged in, an administrator can log out by going to the sidebar and pressing the "log out" button
+
+### Checking the Schedule
+
+If a user wants to check the schedule, he needs to go to the Home Screen, open the sidebar, select the "schedule" button and the app takes him to the Schedule screen.
+
+
 
 ---
 ## Configuration and change management
