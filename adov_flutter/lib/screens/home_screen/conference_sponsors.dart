@@ -42,6 +42,7 @@ class ConferenceSponsors extends StatelessWidget {
                   }
                   String sponsors = _getSponsors(snapshot.data['sponsors']);
                   return Container(
+                    width: 400,
                     margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     decoration: ComponentBoxStyle.create(
