@@ -31,8 +31,8 @@ class TalkContainer extends StatelessWidget {
                   color: (nextTalk) ? TextColorLight : TextColorAccent),
             ),
             Text(
-              DateFormat('dd/MM/yyyy ').format(talk.day) +
-                  talk.time.format(context),
+              /* DateFormat('dd/MM/yyyy ').format(talk.day) + */
+              talk.time.format(context),
               style: Theme.of(context)
                   .textTheme
                   .caption
